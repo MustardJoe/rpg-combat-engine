@@ -1,0 +1,7 @@
+.mainScreen {
+  background-color: black;
+  color: aquamarine;
+  min-width: 68vw;
+  min-height: 60vh;
+  padding: 3em;
+}
