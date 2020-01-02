@@ -1,0 +1,7 @@
+.userActions {
+  display: inline-block;
+  border: solid 2px crimson;
+  padding: 2em;
+  border-radius: 2em;
+  margin: 1em;
+}
