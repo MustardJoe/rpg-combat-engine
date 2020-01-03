@@ -1,4 +1,5 @@
 const CombatEngine = {
+
   player: {
     fight: function(enemyAC, playerHitBonus) {
       let fightActionReturnObject = {};
@@ -8,8 +9,7 @@ const CombatEngine = {
       console.log('you rolled a ' + thisRoll);
       if(thisRoll >= enemyAC) {
         fightActionReturnObject.combatMsg = 'you hit the enemy';
-        let damageRoll = CombatEngine.dieRolls.d8();
-        fightActionReturnObject.damage = damageRoll;
+        fightActionReturnObject.damage = CombatEngine.dieRolls.d8();
       } 
       else {
         fightActionReturnObject.combatMsg = 'you missed the enemy';
@@ -17,8 +17,15 @@ const CombatEngine = {
       }
       return fightActionReturnObject;
     },
-
   },
+
+  enemy: {
+    fight: function(playerAC, enemyHitBonus) {
+      let fightActionReturnObject = {};
+      return fightActionReturnObject;
+    },
+  },
+
   dieRolls: {
     d20: function() {
       return Math.floor((Math.random()) * 20 + 1);
