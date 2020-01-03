@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Actions from '../actions/Actions';
 import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
-import EnemyComp from '../enemycomp/EnemyComp';
+import EnemyComp from '../enemystats/EnemyStats';
 import CombatEngine from '../../services/combatengine/CombatEngine';
 import enemies from '../../services/gamedata/Enemies';
 import players from '../../services/gamedata/Players';
@@ -48,8 +48,8 @@ class GameLayout extends Component {
         <MainScreen className={styles.mainScreen} 
           currentCombatMsg={this.state.currentCombatMsg}/>
         <div>
+          <PlayerStats playerStatsObj={this.state.player}/>
           <Actions playerTriesToHit={this.playerTriesToHit}/>
-          <PlayerStats />
           <EnemyComp enemy={this.state.currentEnemy}/>
         </div>
       </div>
