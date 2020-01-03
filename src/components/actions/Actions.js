@@ -15,6 +15,7 @@ class Actions extends Component {
   render() {
     return (
       <section className={styles.userActions}>
+        Player Actions
         <ul>
           <li>Fight</li>
           <li>Heal</li>
