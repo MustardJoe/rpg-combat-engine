@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './enemycomp.css';
+import styles from './enemystats.css';
 import PropTypes from 'prop-types';
 
+// shape of enemy obj below:
 // name: 'Goomba',
 // damage: 1,
 // strengthBonus: 0,
@@ -20,9 +21,8 @@ function EnemyComp({ enemy }) {
 
   return (
     <section className={styles.enemyStats}>
-      Temporary or maybe secret comp will change over time
+      Current Enemy: {name}
       <ul>
-        <li>Name: {name}</li>
         <li>HP: {hitPoints}</li>
         <li>AC: {armorClass}</li>
         <li>Special - Not yet implemented</li>
