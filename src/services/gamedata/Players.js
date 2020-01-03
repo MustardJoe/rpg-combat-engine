@@ -1,9 +1,10 @@
 const Players = [
   {
     name: 'Riptor the Butt Damager',
-    HP: 20,
+    hitPoints: 20,
     armorClass: 12,
     hitBonus: 1,
+    damage: 8,
     agility: 15,
     strength: 15,
     healPotions: 3,
