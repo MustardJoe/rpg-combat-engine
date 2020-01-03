@@ -13,6 +13,7 @@ class GameLayout extends Component {
     currentEnemy: { data: 'none' },
     player: players[0],
     battlesFought: 0,
+    currentTurn: 'player',
   };
 
   loadEnemy = () => {
@@ -27,18 +28,51 @@ class GameLayout extends Component {
 
   //player actions linked from engine here
   playerTriesToHit = () => {
-    let tempReturnObj = CombatEngine.player.fight(this.state.currentEnemy.armorClass,
-      this.state.player.hitBonus);
-    console.log(tempReturnObj);
+    let playerFightReturnObj = CombatEngine.universalActions.fight(
+      this.state.currentEnemy.armorClass,
+      this.state.player.hitBonus,
+      this.state.currentEnemy.hitPoints,
+      this.state.player.damage,
+      this.state.currentTurn,
+    );
+
+    /* eslint-disable-next-line no-console */
+    console.log('playerFightReturnObj', playerFightReturnObj);
     let newState = { ...this.state };
-    newState.currentEnemy.hitPoints -= tempReturnObj.damage;
-    if(newState.currentEnemy.hitPoints < 0) newState.currentEnemy.hitPoints = 0;
-    newState.currentCombatMsg = tempReturnObj.combatMsg;
+    newState.currentEnemy.hitPoints = playerFightReturnObj.newHP;
+    newState.currentCombatMsg = playerFightReturnObj.combatMsg;
+    newState.currentTurn = 'enemy';
+    return this.setState({ ...newState });
+  }
+
+  //enemy actions linked from engine here
+  enemyTriesToHit = () => {
+    let enemyFightReturnObj = CombatEngine.universalActions.fight(
+      this.state.player.armorClass,
+      this.state.currentEnemy.hitBonus,
+      this.state.player.hitPoints,
+      this.state.currentEnemy.damage,
+      this.state.currentTurn,
+    );
+    
+    /* eslint-disable-next-line no-console */
+    console.log('enemyFightReturnObj', enemyFightReturnObj);
+    let newState = { ...this.state };
+    newState.player.hitPoints = enemyFightReturnObj.newHP;
+    newState.currentCombatMsg = enemyFightReturnObj.combatMsg;
+    newState.currentTurn = 'player';
     return this.setState({ ...newState });
   }
 
   componentDidMount() {
     this.loadEnemy();
+  }
+
+  componentDidUpdate() {
+    if(this.state.currentTurn === 'enemy') {
+      console.log('enemy is trying to hit you');
+      this.enemyTriesToHit();
+    }
   }
 
 
