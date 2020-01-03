@@ -5,7 +5,7 @@ import styles from './playerstats.css';
 function PlayerStats({ playerStatsObj }) {
   const {
     name,
-    HP,
+    hitPoints,
     armorClass,
     agility,
     strength,
@@ -17,7 +17,7 @@ function PlayerStats({ playerStatsObj }) {
     <div className={styles.yourStatsWindow}>
       <span>{name}</span>
       <ul className={styles.yourStatsList}>
-        <li>Hit Points: {HP}</li>
+        <li>Hit Points: {hitPoints}</li>
         <li>Armor Class: {armorClass}</li>
         <li>Agility: {agility}</li>
         <li>Strength: {strength}</li>
@@ -31,12 +31,12 @@ function PlayerStats({ playerStatsObj }) {
 PlayerStats.propTypes = {
   playerStatsObj: PropTypes.shape({
     name: PropTypes.string,
-    HP: PropTypes.number,
+    hitPoints: PropTypes.number,
     armorClass: PropTypes.number,
     agility: PropTypes.number,
     strength: PropTypes.number,
     healPotions: PropTypes.number,
-    status: PropTypes.number,
+    status: PropTypes.string,
   })
 };
 
