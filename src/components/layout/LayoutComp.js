@@ -69,7 +69,7 @@ class GameLayout extends Component {
   }
 
   componentDidUpdate() {
-    if(this.state.currentTurn === 'enemy') {
+    if(this.state.currentTurn === 'enemy' && this.state.currentEnemy.hitPoints > 0) {
       console.log('enemy is trying to hit you');
       this.enemyTriesToHit();
     }
@@ -79,12 +79,13 @@ class GameLayout extends Component {
   render() {
     return (
       <div className={styles.containerStyle}>
-        <MainScreen className={styles.mainScreen} 
-          currentCombatMsg={this.state.currentCombatMsg}/>
-        <div>
-          <PlayerStats playerStatsObj={this.state.player}/>
-          <Actions playerTriesToHit={this.playerTriesToHit}/>
-          <EnemyComp enemy={this.state.currentEnemy}/>
+        <MainScreen 
+          currentCombatMsg={this.state.currentCombatMsg}
+          enemyImg={this.state.currentEnemy.img} />
+        <div className={styles.dashboard}>
+          <PlayerStats playerStatsObj={this.state.player} />
+          <Actions playerTriesToHit={this.playerTriesToHit} />
+          <EnemyComp enemy={this.state.currentEnemy} />
         </div>
       </div>
     );
