@@ -1,8 +1,14 @@
 .mainScreen {
   background-color: black;
   color: green;
+  border: solid 2px greenyellow;
   min-width: 68vw;
   min-height: 20vh;
-  padding: 3em;
-  font-size: 2em;;
+  padding: 2em;
+  font-size: 1.6em;
+  border-radius: 2em;
+}
+
+.img {
+  max-height: 20vh;
 }
