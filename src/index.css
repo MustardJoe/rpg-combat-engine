@@ -4,8 +4,16 @@
 
 body {
   background-color: dimgrey;
+  background-color: darkolivegreen;
+  background-color: black;
   color: limegreen;
   font-family: 'Alegreya', serif;
   font-family: 'Inknut Antiqua', serif;
   line-height: 1.4em;
+  text-align: center;
+  justify-content: center;
+}
+
+.subtitle {
+  color: rgb(40, 167, 40)
 }
