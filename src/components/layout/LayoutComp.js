@@ -26,7 +26,7 @@ class GameLayout extends Component {
     }
   }
 
-  //player actions linked from engine here
+  //PLAYER ACTIONS linked from engine here
   playerTriesToHit = () => {
     let playerFightReturnObj = CombatEngine.universalActions.fight(
       this.state.currentEnemy.armorClass,
@@ -45,7 +45,23 @@ class GameLayout extends Component {
     return this.setState({ ...newState });
   }
 
-  //enemy actions linked from engine here
+  playerTriesToHeal = () => {
+    let playerHealReturnObj = CombatEngine.universalActions.heal(
+      this.state.player.hitPoints,
+      this.state.player.healPotions,
+      this.state.player.maxHP,
+      this.state.currentTurn,
+    );
+
+    let newState = { ...this.state };
+    newState.player.hitPoints = playerHealReturnObj.newHP;
+    newState.player.healPotions = playerHealReturnObj.remainingHealPotions;
+    newState.currentCombatMsg = playerHealReturnObj.actionMsg;
+    newState.currentTurn = 'enemy';
+    return this.setState({ ...newState });
+  }
+
+  //ENEMY ACTIONS linked from engine here
   enemyTriesToHit = () => {
     let enemyFightReturnObj = CombatEngine.universalActions.fight(
       this.state.player.armorClass,
@@ -84,7 +100,8 @@ class GameLayout extends Component {
           enemyImg={this.state.currentEnemy.img} />
         <div className={styles.dashboard}>
           <PlayerStats playerStatsObj={this.state.player} />
-          <Actions playerTriesToHit={this.playerTriesToHit} />
+          <Actions playerTriesToHit={this.playerTriesToHit} 
+            playerTriesToHeal={this.playerTriesToHeal} />
           <EnemyComp enemy={this.state.currentEnemy} />
         </div>
       </div>
