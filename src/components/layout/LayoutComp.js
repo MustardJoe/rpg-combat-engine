@@ -18,7 +18,7 @@ class GameLayout extends Component {
 
   loadEnemy = () => {
     if(this.state.currentEnemy.data === 'none') {
-      let randomEnemy = Math.floor(Math.random() * 3);
+      let randomEnemy = Math.floor(Math.random() * 4);
       /* eslint-disable-next-line no-console */
       console.log(randomEnemy);
       return this.setState({ currentEnemy: enemies[randomEnemy],
