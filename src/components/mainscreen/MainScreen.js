@@ -6,7 +6,7 @@ function MainScreen({ currentCombatMsg, enemyImg }) {
   return (
     <section className={styles.mainScreen}>
       <p>{currentCombatMsg}</p>
-      <p><img className={styles.img} src={enemyImg} alt="image of a badie"></img></p>
+      <p><img className={styles.img} src={enemyImg} alt="<image of a baddie>"></img></p>
     </section>
   );
 }
