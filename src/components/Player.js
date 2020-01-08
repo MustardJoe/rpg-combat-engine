@@ -31,8 +31,8 @@ class Player {
       return null;
     }
     const rollValue = this._getRoll(20, this.state.hitBonus);
-    if (rollValue >= enemy.armourClass) {
-      this._damageEnemy(enemy)
+    if(rollValue >= enemy.armourClass) {
+      this._damageEnemy(enemy);
     }
   }
 
@@ -40,7 +40,7 @@ class Player {
 
   getStatus = (status) => this.state[status]
 
-  _getRoll = (sides, bonus=0) => {
+  _getRoll = (sides, bonus = 0) => {
     return Math.floor((Math.random()) * sides + 1) + bonus;
   }
 
@@ -56,57 +56,57 @@ class Player {
 
 export default Player;
 
-const grubbyGrub = new Enemy()
-// grubbyGrub.state.hitPoints = 20
+// const grubbyGrub = new Enemy()
+// // grubbyGrub.state.hitPoints = 20
 
 
 
-class FileCollector {
-  constructor(root){
-    this.data = {
-      path: path.join(root, './data/'),
-      files : []
-    }
-    this.schema = {
-      path: path.join(root, './schemas/'),
-      files: []
-    }
-    this.output = []
-  }
+// class FileCollector {
+//   constructor(root){
+//     this.data = {
+//       path: path.join(root, './data/'),
+//       files : []
+//     },
+//     this.schema = {
+//       path: path.join(root, './schemas/'),
+//       files: []
+//     },
+//     this.output = [];
+//   }
 
-  _getFiles = (dir, ending) => {
-    return new Promise(resolve => {
-      fs.readdir(dir.path, (err, results) => {
-        dir.files = results.reduce((accum, result) => {
-          const textArr = result.split('.')
-          const end = textArr.pop()
-          if (ending === end) {
-            accum.push(textArr.join(''))
-          }
-          return accum
-        }, [])
-        resolve()
-      })
-    })
-  }
+//   _getFiles = (dir, ending) => {
+//     return new Promise(resolve => {
+//       fs.readdir(dir.path, (err, results) => {
+//         dir.files = results.reduce((accum, result) => {
+//           const textArr = result.split('.');
+//           const end = textArr.pop();
+//           if(ending === end) {
+//             accum.push(textArr.join(''));
+//           }
+//           return accum;
+//         }, []);
+//         resolve();
+//       });
+//     });
+//   }
 
-  _createFileObjects = arr => {
-    return arr.map(item => {
-      return {
-        textPath: path.join(this.data.path, `${item}.txt`),
-        schemaPath: path.join(this.schema.path, `${item}.csv`)
-      }
-    })
-  }
+//   _createFileObjects = arr => {
+//     return arr.map(item => {
+//       return {
+//         textPath: path.join(this.data.path, `${item}.txt`),
+//         schemaPath: path.join(this.schema.path, `${item}.csv`)
+//       };
+//     });
+//   }
 
-  /* this function returns a list of data/schema path objects */
-  mergeDataAndSchemas = async () => {
-    await this._getFiles(this.data, 'txt')
-    await this._getFiles(this.schema, 'csv')
-    this.output = this._createFileObjects(
-      intersection(this.data.files, this.schema.files)
-    )
-    return this.output
-  }
+//   /* this function returns a list of data/schema path objects */
+//   mergeDataAndSchemas = async() => {
+//     await this._getFiles(this.data, 'txt');
+//     await this._getFiles(this.schema, 'csv');
+//     this.output = this._createFileObjects(
+//       intersection(this.data.files, this.schema.files)
+//     );
+//     return this.output;
+//   }
 
-}
+// }
