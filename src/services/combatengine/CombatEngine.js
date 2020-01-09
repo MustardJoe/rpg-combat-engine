@@ -18,13 +18,8 @@ const CombatEngine = {
   universalActions: {
     fight: function(armorClass, hitBonus, hitPoints, damageD, currentTurn) {
       let fightActionReturnObj = {};
-      /* eslint-disable-next-line no-console */
-      console.log('in CombatEngine.js - AC', armorClass);
-      /* eslint-disable-next-line no-console */
-      console.log('hit bonus', hitBonus);
       let thisRoll = CombatEngine.dieRolls.d20() + hitBonus;
-      /* eslint-disable-next-line no-console */
-      console.log('you rolled a ' + thisRoll);
+
       if(thisRoll >= armorClass) {
         fightActionReturnObj.combatMsg = CombatEngine.combatMsgs[`${currentTurn}`][0];
         fightActionReturnObj.damage = CombatEngine.dieRolls[`d${damageD}`]();
