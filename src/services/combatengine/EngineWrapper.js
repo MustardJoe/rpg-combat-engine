@@ -17,9 +17,12 @@ class EngineWrapper extends Component {
   };
 
   loadPlayer = () => {
-    let thisPlayer = new Player();
+    let thisPlayer = new Player('Riptor the Butt Damager', 20, 20, 2, 1, 8, 5, 5,
+      3,
+      'Normal',
+      true,);
     console.log(thisPlayer);
-    // return this.state.player({ ...thisPlayer });
+    return this.setState({ player: thisPlayer });
   }
 
   loadEnemy = () => {
