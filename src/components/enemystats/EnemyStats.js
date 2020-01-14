@@ -10,6 +10,9 @@ import PropTypes from 'prop-types';
 // armor: 0,
 // dexterity: 5,
 // hitPoints: 2,
+// healPotions: 3,
+// status: 'Normal',
+// alive: true,
 
 
 function EnemyComp({ enemy }) {
