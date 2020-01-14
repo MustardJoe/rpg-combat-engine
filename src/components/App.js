@@ -7,7 +7,7 @@ export default function App() {
     <>
       <h1>GriNd-O-TRoN</h1>
       <h3>A turn-based combat engine</h3>
-      <EngineWrapper />
+      <LayoutComp />
     </>
   );
 }
