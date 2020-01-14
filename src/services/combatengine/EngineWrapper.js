@@ -19,7 +19,7 @@ class EngineWrapper extends Component {
   loadPlayer = () => {
     let thisPlayer = new Player();
     console.log(thisPlayer);
-    return this.state.player({ ...thisPlayer });
+    // return this.state.player({ ...thisPlayer });
   }
 
   loadEnemy = () => {
