@@ -4,7 +4,7 @@ const CombatEngine = {
     actionsList: ['fight'],
   },
 
-  combatMsgs: {
+  attackRollMsgs: {
     player: ['You hit the enemy', 'You missed the enemy'],
     enemy: ['You are hit by the enemy', 'The enemy misses you'],
   },
@@ -21,13 +21,13 @@ const CombatEngine = {
       let thisRoll = CombatEngine.dieRolls.d20() + hitBonus;
 
       if(thisRoll >= armorClass) {
-        fightActionReturnObj.combatMsg = CombatEngine.combatMsgs[`${currentTurn}`][0];
-        fightActionReturnObj.damage = CombatEngine.dieRolls[`d${damageD}`]();
+        fightActionReturnObj.combatMsg = CombatEngine.attackRollMsgs[`${currentTurn}`][0];
+        fightActionReturnObj.damage = CombatEngine.dieRolls.universal(damageD);
         fightActionReturnObj.newHP = hitPoints - fightActionReturnObj.damage;
         if(fightActionReturnObj.newHP < 0) fightActionReturnObj.newHP = 0;
       } 
       else {
-        fightActionReturnObj.combatMsg = CombatEngine.combatMsgs[`${currentTurn}`][1];
+        fightActionReturnObj.combatMsg = CombatEngine.attackRollMsgs[`${currentTurn}`][1];
         fightActionReturnObj.damage = 0; 
         fightActionReturnObj.newHP = hitPoints;
       }
