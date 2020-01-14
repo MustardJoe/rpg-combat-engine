@@ -10,6 +10,7 @@ const Players = [
     strength: 15,
     healPotions: 3,
     status: 'Normal',
+    alive: true,
   }
 ];
 
