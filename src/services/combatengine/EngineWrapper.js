@@ -8,6 +8,48 @@ import enemies from '../../services/gamedata/Enemies';
 import styles from '../../components/layout/layoutcomp.css';
 import Player from '../combatengine/PlayerClass';
 
+class Game extends Component {
+  state = {
+    currentEnemy: null, 
+    player: null,
+    battlesFought: 0,
+    gameStarted: false, 
+  }
+
+  startGame(){
+    this.loadPlayer();
+    this.loadEnemy();
+    this.setState({ gameStarted: true });
+  }
+
+  loadPlayer = () => {
+    this.setState({ player: new Player() });
+  }
+
+  loadEnemy = () => {
+    if(!this.state.currentEnemy || !this.state.currentEnemy.data.alive) {
+      let randomEnemy = Math.floor(Math.random() * enemies.length);
+      this.setState({ currentEnemy: enemies[randomEnemy] });
+      
+      //currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!` });
+    }
+  }
+
+  // enacts 1 game play that the user chooses, and enacts one game play from the enemy
+  takeTurn(playerAction){
+    // ensure that the game is active. this.checkGame();
+    // Player takes turn (call playerAction) this.player[playerAction]()
+    // ensure that enemy is not dead. (if they are, player wins) this.checkGame()
+    // Enemy takes turn (random selection of choices. -- you can make a smart random.)
+    // ensure that player is not dead (player looses)
+    // figure out what happened and
+    // update message here!
+    // if game is over, setstate for endGame
+
+  }
+
+}
+
 class EngineWrapper extends Component {
   state = {
     currentEnemy: { data: 'none' },
@@ -21,7 +63,6 @@ class EngineWrapper extends Component {
       3,
       'Normal',
       true,);
-    console.log(thisPlayer);
     return this.setState({ player: thisPlayer });
   }
 
@@ -29,7 +70,6 @@ class EngineWrapper extends Component {
     if(this.state.currentEnemy.data === 'none') {
       let randomEnemy = Math.floor(Math.random() * 4);
       /* eslint-disable-next-line no-console */
-      console.log(randomEnemy);
       return this.setState({ currentEnemy: enemies[randomEnemy],
         currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!` });
     }
@@ -60,7 +100,6 @@ class EngineWrapper extends Component {
       this.enemyTriesToHit();
     }
   }
-
 
   render() {
     return (
