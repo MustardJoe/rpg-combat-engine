@@ -12,7 +12,7 @@ class Player {
     status,
     alive,
   }) {
-    this.state = {
+    this.data = {
       name: name || 'Riptor the Fighty',
       hitPoints: hitPoints || 20,
       maxHP: maxHP || 20,
