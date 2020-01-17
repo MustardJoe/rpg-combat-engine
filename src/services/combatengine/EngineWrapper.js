@@ -1,54 +1,54 @@
 import React, { Component } from 'react';
 import Actions from '../../components/actions/Actions';
 import MainScreen from '../../components/mainscreen/MainScreen';
-import PlayerStats from '../../components/playerstats/PlayerStats';
+import PlayerStats from '../../components/playerstats/CBPlayerStats';
 import EnemyComp from '../../components/enemystats/EnemyStats';
 import enemies from '../../services/gamedata/Enemies';
 // import players from '../../services/gamedata/Players';
 import styles from '../../components/layout/layoutcomp.css';
 import Player from '../combatengine/PlayerClass';
 
-class Game extends Component {
-  state = {
-    currentEnemy: null, 
-    player: null,
-    battlesFought: 0,
-    gameStarted: false, 
-  }
+// class Game extends Component {
+//   state = {
+//     currentEnemy: null, 
+//     player: null,
+//     battlesFought: 0,
+//     gameStarted: false, 
+//   }
 
-  startGame(){
-    this.loadPlayer();
-    this.loadEnemy();
-    this.setState({ gameStarted: true });
-  }
+//   startGame(){
+//     this.loadPlayer();
+//     this.loadEnemy();
+//     this.setState({ gameStarted: true });
+//   }
 
-  loadPlayer = () => {
-    this.setState({ player: new Player() });
-  }
+//   loadPlayer = () => {
+//     this.setState({ player: new Player() });
+//   }
 
-  loadEnemy = () => {
-    if(!this.state.currentEnemy || !this.state.currentEnemy.data.alive) {
-      let randomEnemy = Math.floor(Math.random() * enemies.length);
-      this.setState({ currentEnemy: enemies[randomEnemy] });
+//   loadEnemy = () => {
+//     if(!this.state.currentEnemy || !this.state.currentEnemy.data.alive) {
+//       let randomEnemy = Math.floor(Math.random() * enemies.length);
+//       this.setState({ currentEnemy: enemies[randomEnemy] });
       
-      //currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!` });
-    }
-  }
+//       //currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!` });
+//     }
+//   }
 
-  // enacts 1 game play that the user chooses, and enacts one game play from the enemy
-  takeTurn(playerAction){
-    // ensure that the game is active. this.checkGame();
-    // Player takes turn (call playerAction) this.player[playerAction]()
-    // ensure that enemy is not dead. (if they are, player wins) this.checkGame()
-    // Enemy takes turn (random selection of choices. -- you can make a smart random.)
-    // ensure that player is not dead (player looses)
-    // figure out what happened and
-    // update message here!
-    // if game is over, setstate for endGame
+//   // enacts 1 game play that the user chooses, and enacts one game play from the enemy
+//   takeTurn(playerAction){
+//     // ensure that the game is active. this.checkGame();
+//     // Player takes turn (call playerAction) this.player[playerAction]()
+//     // ensure that enemy is not dead. (if they are, player wins) this.checkGame()
+//     // Enemy takes turn (random selection of choices. -- you can make a smart random.)
+//     // ensure that player is not dead (player looses)
+//     // figure out what happened and
+//     // update message here!
+//     // if game is over, setstate for endGame
 
-  }
+//   }
 
-}
+// }
 
 class EngineWrapper extends Component {
   state = {
@@ -59,11 +59,10 @@ class EngineWrapper extends Component {
   };
 
   loadPlayer = () => {
-    let thisPlayer = new Player('Riptor the Butt Damager', 20, 20, 2, 1, 8, 5, 5,
-      3,
-      'Normal',
-      true,);
-    return this.setState({ player: thisPlayer });
+    let thisPlayer = new Player('Riptor the Sad', 20, 20, 2, 1, 8, 5, 5, 3, 'Normal', true,);
+    console.log('this player, I have a player right here!!', thisPlayer);
+    this.setState({ player: thisPlayer });
+    console.log('in load player, i know i have a player, but it didnt take', this.state.player);
   }
 
   loadEnemy = () => {
@@ -92,9 +91,11 @@ class EngineWrapper extends Component {
   componentDidMount() {
     this.loadPlayer();
     this.loadEnemy();
+    console.log('in compDidMount, now no player', this.state.player);
   }
 
   componentDidUpdate() {
+    console.log(this.state.player);
     if(this.state.currentTurn === 'enemy' && this.state.currentEnemy.hitPoints > 0) {
       console.log('enemy is trying to hit you');
       this.enemyTriesToHit();
@@ -108,7 +109,7 @@ class EngineWrapper extends Component {
           currentCombatMsg={this.state.currentCombatMsg}
           enemyImg={this.state.currentEnemy.img} />
         <div className={styles.dashboard}>
-          <PlayerStats playerStatsObj={this.state.player} />
+          <PlayerStats playerStatsObj={this.state.player.stats} />
           <Actions playerTriesToHit={this.playerTriesToHit} 
             playerTriesToHeal={this.playerTriesToHeal} />
           <EnemyComp enemy={this.state.currentEnemy} />
