@@ -12,7 +12,7 @@ class Player {
     status,
     alive,
   }) {
-    this.data = {
+    this.stats = {
       name: name || 'Riptor the Fighty',
       hitPoints: hitPoints || 20,
       maxHP: maxHP || 20,
@@ -61,57 +61,4 @@ class Player {
 
 export default Player;
 
-// const grubbyGrub = new Enemy()
-// // grubbyGrub.state.hitPoints = 20
 
-
-
-// class FileCollector {
-//   constructor(root){
-//     this.data = {
-//       path: path.join(root, './data/'),
-//       files : []
-//     },
-//     this.schema = {
-//       path: path.join(root, './schemas/'),
-//       files: []
-//     },
-//     this.output = [];
-//   }
-
-//   _getFiles = (dir, ending) => {
-//     return new Promise(resolve => {
-//       fs.readdir(dir.path, (err, results) => {
-//         dir.files = results.reduce((accum, result) => {
-//           const textArr = result.split('.');
-//           const end = textArr.pop();
-//           if(ending === end) {
-//             accum.push(textArr.join(''));
-//           }
-//           return accum;
-//         }, []);
-//         resolve();
-//       });
-//     });
-//   }
-
-//   _createFileObjects = arr => {
-//     return arr.map(item => {
-//       return {
-//         textPath: path.join(this.data.path, `${item}.txt`),
-//         schemaPath: path.join(this.schema.path, `${item}.csv`)
-//       };
-//     });
-//   }
-
-//   /* this function returns a list of data/schema path objects */
-//   mergeDataAndSchemas = async() => {
-//     await this._getFiles(this.data, 'txt');
-//     await this._getFiles(this.schema, 'csv');
-//     this.output = this._createFileObjects(
-//       intersection(this.data.files, this.schema.files)
-//     );
-//     return this.output;
-//   }
-
-// }
