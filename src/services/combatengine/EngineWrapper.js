@@ -80,11 +80,13 @@ class EngineWrapper extends Component {
   }
 
   playerTriesToHeal = () => {
+    console.log('heal implementation');
     this.state.player.heal();
   }
 
   //ENEMY ACTIONS linked from engine here
   enemyTriesToHit = () => {
+    console.log('trying to hit');
 
   }
 
