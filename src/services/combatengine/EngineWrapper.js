@@ -109,7 +109,7 @@ class EngineWrapper extends Component {
           currentCombatMsg={this.state.currentCombatMsg}
           enemyImg={this.state.currentEnemy.img} />
         <div className={styles.dashboard}>
-          <PlayerStats playerStatsObj={this.state.player.stats} />
+          {this.state.player.stats ? <PlayerStats playerStatsObj={this.state.player.stats} /> : null}
           <Actions playerTriesToHit={this.playerTriesToHit} 
             playerTriesToHeal={this.playerTriesToHeal} />
           <EnemyComp enemy={this.state.currentEnemy} />
