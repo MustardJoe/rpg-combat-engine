@@ -34,6 +34,26 @@ const CombatEngine = {
       return fightActionReturnObj;
     },
 
+    fight2: function(hitting, beingHit, currentTurn) {
+      let fightActionReturnObj = {};
+      let thisRoll = CombatEngine.dieRolls.d20() + hitting.hitBonus;
+
+      if(thisRoll >= beingHit.armorClass) {
+        fightActionReturnObj.combatMsg = CombatEngine.attackRollMsgs[`${currentTurn}`][0];
+        fightActionReturnObj.damage = CombatEngine.dieRolls.universal(hitting.damageD);
+        fightActionReturnObj.beingHit = { ...beingHit };
+        fightActionReturnObj.beingHit.hitPoints = beingHit.hitPoints - fightActionReturnObj.damage;
+        if(fightActionReturnObj.beingHit.hitPoints < 0) fightActionReturnObj.beingHit.hitPoints = 0;
+      } 
+      else {
+        fightActionReturnObj.combatMsg = CombatEngine.attackRollMsgs[`${currentTurn}`][1];
+        fightActionReturnObj.beingHit = { ...beingHit };
+        fightActionReturnObj.damage = 0; 
+        fightActionReturnObj.beingHit.hitPoints = beingHit.hitPoints;
+      }
+      return fightActionReturnObj;
+    },
+
     heal: function(hitPoints, healPotions, maxHP, currentTurn) {
       let healActionReturnObj = {};
       let healAmount = CombatEngine.dieRolls.universal(5) + 5;
