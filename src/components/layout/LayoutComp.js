@@ -27,26 +27,8 @@ class GameLayout extends Component {
   }
 
   //PLAYER ACTIONS linked from engine here
-  // playerTriesToHit = () => {
-  //   let playerFightReturnObj = CombatEngine.universalActions.fight(
-  //     this.state.currentEnemy.armorClass,
-  //     this.state.player.hitBonus,
-  //     this.state.currentEnemy.hitPoints,
-  //     this.state.player.damage,
-  //     this.state.currentTurn,
-  //   );
-
-  //   /* eslint-disable-next-line no-console */
-  //   console.log('playerFightReturnObj', playerFightReturnObj);
-  //   let newState = { ...this.state };
-  //   newState.currentEnemy.hitPoints = playerFightReturnObj.newHP;
-  //   newState.currentCombatMsg = playerFightReturnObj.combatMsg;
-  //   newState.currentTurn = 'enemy';
-  //   return this.setState({ ...newState });
-  // }
-
   playerTriesToHit = () => {
-    let playerFightReturnObj = CombatEngine.universalActions.fight2(
+    let playerFightReturnObj = CombatEngine.universalActions.fight(
       this.state.player,
       this.state.currentEnemy,
       this.state.currentTurn,
@@ -57,15 +39,13 @@ class GameLayout extends Component {
     let newState = { ...this.state };
     newState.currentEnemy = playerFightReturnObj.beingHit;
     newState.currentCombatMsg = playerFightReturnObj.combatMsg;
-    newState.currentTurn = 'enemy';
+    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     return this.setState({ ...newState });
   }
 
   playerTriesToHeal = () => {
     let playerHealReturnObj = CombatEngine.universalActions.heal(
-      this.state.player.hitPoints,
-      this.state.player.healPotions,
-      this.state.player.maxHP,
+      this.state.player,
       this.state.currentTurn,
     );
 
@@ -73,26 +53,24 @@ class GameLayout extends Component {
     newState.player.hitPoints = playerHealReturnObj.newHP;
     newState.player.healPotions = playerHealReturnObj.remainingHealPotions;
     newState.currentCombatMsg = playerHealReturnObj.actionMsg;
-    newState.currentTurn = 'enemy';
+    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     return this.setState({ ...newState });
   }
 
   //ENEMY ACTIONS linked from engine here
   enemyTriesToHit = () => {
     let enemyFightReturnObj = CombatEngine.universalActions.fight(
-      this.state.player.armorClass,
-      this.state.currentEnemy.hitBonus,
-      this.state.player.hitPoints,
-      this.state.currentEnemy.damage,
+      this.state.currentEnemy,
+      this.state.player,
       this.state.currentTurn,
     );
     
     /* eslint-disable-next-line no-console */
     console.log('enemyFightReturnObj', enemyFightReturnObj);
     let newState = { ...this.state };
-    newState.player.hitPoints = enemyFightReturnObj.newHP;
+    newState.player = enemyFightReturnObj.beingHit;
     newState.currentCombatMsg = enemyFightReturnObj.combatMsg;
-    newState.currentTurn = 'player';
+    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     return this.setState({ ...newState });
   }
 
