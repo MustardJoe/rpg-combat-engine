@@ -50,8 +50,7 @@ class GameLayout extends Component {
     );
 
     let newState = { ...this.state };
-    newState.player.hitPoints = playerHealReturnObj.newHP;
-    newState.player.healPotions = playerHealReturnObj.remainingHealPotions;
+    newState.player = playerHealReturnObj.healTarget;
     newState.currentCombatMsg = playerHealReturnObj.actionMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     return this.setState({ ...newState });
