@@ -27,19 +27,35 @@ class GameLayout extends Component {
   }
 
   //PLAYER ACTIONS linked from engine here
+  // playerTriesToHit = () => {
+  //   let playerFightReturnObj = CombatEngine.universalActions.fight(
+  //     this.state.currentEnemy.armorClass,
+  //     this.state.player.hitBonus,
+  //     this.state.currentEnemy.hitPoints,
+  //     this.state.player.damage,
+  //     this.state.currentTurn,
+  //   );
+
+  //   /* eslint-disable-next-line no-console */
+  //   console.log('playerFightReturnObj', playerFightReturnObj);
+  //   let newState = { ...this.state };
+  //   newState.currentEnemy.hitPoints = playerFightReturnObj.newHP;
+  //   newState.currentCombatMsg = playerFightReturnObj.combatMsg;
+  //   newState.currentTurn = 'enemy';
+  //   return this.setState({ ...newState });
+  // }
+
   playerTriesToHit = () => {
-    let playerFightReturnObj = CombatEngine.universalActions.fight(
-      this.state.currentEnemy.armorClass,
-      this.state.player.hitBonus,
-      this.state.currentEnemy.hitPoints,
-      this.state.player.damage,
+    let playerFightReturnObj = CombatEngine.universalActions.fight2(
+      this.state.player,
+      this.state.currentEnemy,
       this.state.currentTurn,
     );
 
     /* eslint-disable-next-line no-console */
     console.log('playerFightReturnObj', playerFightReturnObj);
     let newState = { ...this.state };
-    newState.currentEnemy.hitPoints = playerFightReturnObj.newHP;
+    newState.currentEnemy = playerFightReturnObj.beingHit;
     newState.currentCombatMsg = playerFightReturnObj.combatMsg;
     newState.currentTurn = 'enemy';
     return this.setState({ ...newState });
