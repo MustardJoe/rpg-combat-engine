@@ -1,3 +1,5 @@
+import { func } from "prop-types";
+
 const CombatEngine = {
 
   enemyActions: {
@@ -15,26 +17,17 @@ const CombatEngine = {
       'The enemy fails to drink a healing potion'],
   },
 
+  turnSwap: function(currentTurn) {
+    if(currentTurn === 'player') {
+      return 'enemy';
+    }
+    else if(currentTurn === 'enemy') {
+      return 'player';
+    }
+  },
+
   universalActions: {
-    fight: function(armorClass, hitBonus, hitPoints, damageD, currentTurn) {
-      let fightActionReturnObj = {};
-      let thisRoll = CombatEngine.dieRolls.d20() + hitBonus;
-
-      if(thisRoll >= armorClass) {
-        fightActionReturnObj.combatMsg = CombatEngine.attackRollMsgs[`${currentTurn}`][0];
-        fightActionReturnObj.damage = CombatEngine.dieRolls.universal(damageD);
-        fightActionReturnObj.newHP = hitPoints - fightActionReturnObj.damage;
-        if(fightActionReturnObj.newHP < 0) fightActionReturnObj.newHP = 0;
-      } 
-      else {
-        fightActionReturnObj.combatMsg = CombatEngine.attackRollMsgs[`${currentTurn}`][1];
-        fightActionReturnObj.damage = 0; 
-        fightActionReturnObj.newHP = hitPoints;
-      }
-      return fightActionReturnObj;
-    },
-
-    fight2: function(hitting, beingHit, currentTurn) {
+    fight: function(hitting, beingHit, currentTurn) {
       let fightActionReturnObj = {};
       let thisRoll = CombatEngine.dieRolls.d20() + hitting.hitBonus;
 
@@ -54,19 +47,22 @@ const CombatEngine = {
       return fightActionReturnObj;
     },
 
-    heal: function(hitPoints, healPotions, maxHP, currentTurn) {
+    heal: function(healTarget, currentTurn) {
       let healActionReturnObj = {};
+      healActionReturnObj.healTarget = { ...healTarget };
       let healAmount = CombatEngine.dieRolls.universal(5) + 5;
-      if(healPotions > 0) {
+      if(healTarget.healPotions > 0) {
         healActionReturnObj.actionMsg = CombatEngine.healMsgs[`${currentTurn}`][0];
-        healActionReturnObj.newHP = hitPoints + healAmount;
-        if(healActionReturnObj.newHP > maxHP) healActionReturnObj.newHP = maxHP;
-        healActionReturnObj.remainingHealPotions = healPotions - 1;
+        healActionReturnObj.healTarget.hitPoints = healTarget.hitPoints + healAmount;
+        if(healActionReturnObj.healTarget.hitPoints > healTarget.maxHP) {
+          healActionReturnObj.healTarget.hitPoints = healTarget.maxHP;
+        }
+        healActionReturnObj.healTarget.healPotions = healTarget.healPotions - 1;
       }
-      if(healPotions <= 0) {
+      if(healTarget.healPotions <= 0) {
         healActionReturnObj.actionMsg = CombatEngine.healMsgs[`${currentTurn}`][1];
-        healActionReturnObj.newHP = hitPoints;
-        healActionReturnObj.remainingHealPotions = 0;
+        healActionReturnObj.healTarget.hitPoints = healTarget.hitPoints;
+        healActionReturnObj.healTarget.healPotions = 0;
       }
       console.log('heal amount', healAmount);
       console.log('returnObj', healActionReturnObj);
