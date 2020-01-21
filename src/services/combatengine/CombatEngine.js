@@ -16,6 +16,10 @@ const CombatEngine = {
     enemy: ['the enemy drinks a healing potion',
       'The enemy fails to drink a healing potion'],
   },
+  deathMsgs: {
+    player: [],
+    enemy: 'You have bested your foe! Your enemy falls to the ground and explodes in a cloud of glitter',
+  },
 
   turnSwap: function(currentTurn) {
     if(currentTurn === 'player') {
@@ -64,11 +68,21 @@ const CombatEngine = {
         healActionReturnObj.healTarget.hitPoints = healTarget.hitPoints;
         healActionReturnObj.healTarget.healPotions = 0;
       }
-      console.log('heal amount', healAmount);
-      console.log('returnObj', healActionReturnObj);
       return healActionReturnObj;
-
     }
+  },
+
+  enemyDeath: function(enemy) {
+    let deathReturnObj = {};
+    deathReturnObj.enemy = { ...enemy };
+    if(enemy.hitPoints <= 0) {
+      deathReturnObj.enemy.alive = false;
+      deathReturnObj.msg = CombatEngine.deathMsgs.enemy;
+      deathReturnObj.currentEnemy = { data: 'none' };
+      deathReturnObj.currentTurn = 'player';
+      return deathReturnObj;
+    }
+    return null;
   },
 
   dieRolls: {
