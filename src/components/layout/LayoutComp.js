@@ -19,10 +19,9 @@ class GameLayout extends Component {
   loadEnemy = () => {
     if(this.state.currentEnemy.data === 'none') {
       let randomEnemy = Math.floor(Math.random() * 4);
-      /* eslint-disable-next-line no-console */
-      console.log(randomEnemy);
       return this.setState({ currentEnemy: enemies[randomEnemy],
-        currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!` });
+        currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!`,
+        battlesFought: this.state.battlesFought + 1 });
     }
   }
 
@@ -81,6 +80,18 @@ class GameLayout extends Component {
     if(this.state.currentTurn === 'enemy' && this.state.currentEnemy.hitPoints > 0) {
       console.log('enemy is trying to hit you');
       this.enemyTriesToHit();
+    }
+    else if(this.state.currentEnemy.hitPoints === 0) {
+      let deathReturnObj = CombatEngine.enemyDeath(this.state.currentEnemy);
+      console.log(deathReturnObj);
+      let newState = { ...this.state };
+      newState.currentEnemy = deathReturnObj.currentEnemy;
+      newState.currentTurn = deathReturnObj.currentTurn;
+      newState.combatMsg = deathReturnObj.msg;
+      this.setState({ ...newState });
+    }
+    else if(this.state.currentEnemy.data === 'none') {
+      this.loadEnemy();
     }
   }
 
