@@ -14,3 +14,8 @@
 .yourStatsList {
   list-style: none;
 }
+
+.youAre {
+  text-align: left;
+  color: yellowgreen;
+}

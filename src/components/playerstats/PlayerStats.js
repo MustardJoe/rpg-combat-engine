@@ -16,6 +16,7 @@ function PlayerStats({ playerStatsObj }) {
 
   return (
     <div className={styles.yourStatsWindow}>
+      <p className={styles.youAre}>You are:</p>
       <span className={styles.name}>{name}</span>
       <ul className={styles.yourStatsList}>
         <li>Hit Points: {hitPoints}</li>
