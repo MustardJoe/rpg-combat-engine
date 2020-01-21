@@ -1,6 +1,6 @@
 const Players = [
   {
-    name: 'Riptor the Butt Damager',
+    name: 'Riptor the Moderately Dangerous',
     hitPoints: 20,
     maxHP: 20,
     armorClass: 12,
@@ -10,6 +10,8 @@ const Players = [
     strength: 15,
     healPotions: 3,
     status: 'Normal',
+    exp: 0,
+    level: 1,
     alive: true,
   }
 ];
