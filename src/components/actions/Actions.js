@@ -22,15 +22,13 @@ class Actions extends Component {
     return (
       <section className={styles.userActions}>
         Player Actions
-        <ul>
+        <ul className={styles.actionsList}>
           <li>
             <button type="Fight" onClick={this.playerClicksFight}>Fight</button>
           </li>
           <li>
             <button type="Heal" onClick={this.playerClicksHeal}>Heal</button>
           </li>
-          <li>Fight</li>
-          <li>Heal</li>
           <li>Special</li>
         </ul>
       </section>

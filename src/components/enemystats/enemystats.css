@@ -4,5 +4,9 @@
   padding: 2em;
   border-radius: 2em;
   margin: 1em;
-  height: 8em;
+  min-height: 12em;
+}
+
+.statsList {
+  list-style: none;
 }

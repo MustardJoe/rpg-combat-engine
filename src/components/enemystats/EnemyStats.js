@@ -25,7 +25,7 @@ function EnemyComp({ enemy }) {
   return (
     <section className={styles.enemyStats}>
       Current Enemy: {name}
-      <ul>
+      <ul className={styles.statsList}>
         <li>HP: {hitPoints}</li>
         <li>AC: {armorClass}</li>
         <li>Special - Not yet implemented</li>
