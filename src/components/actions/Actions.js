@@ -30,6 +30,7 @@ class Actions extends Component {
             <button type="Heal" onClick={this.playerClicksHeal}>Heal</button>
           </li>
           <li>Special</li>
+          <li>Run</li>
         </ul>
       </section>
     );
