@@ -30,7 +30,7 @@ class Player {
     if(currentTurn != 'player') {
       return null;
     }
-    const rollValue = this._getRoll(20, this.state.hitBonus);
+    const rollValue = this._getRoll(20, this.stats.hitBonus);
     if(rollValue >= enemy.armourClass) {
       this._damageEnemy(enemy);
     }
