@@ -11,3 +11,15 @@ export default function App() {
     </>
   );
 }
+
+// player chooses an action
+// action is done and results are tallied
+// message is displayed for 2 seconds
+// player turn is over
+// is game over?
+// if not enemy turn begins
+// enemy chooses an action
+// action is done and results are tallied
+// message is displayed for 2 seconds
+// is game over?
+// user is given another opportunity to take next move.
