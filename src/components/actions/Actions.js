@@ -14,8 +14,11 @@ class Actions extends Component {
   }
 
   playerClicksHeal = () => {
-    console.log('player clicked heal');
     this.props.playerTriesToHeal();
+  }
+
+  playerClicksRun = () => {
+    console.log('you try to run, but this feature is still in development');
   }
   
   render() {
@@ -30,7 +33,9 @@ class Actions extends Component {
             <button type="Heal" onClick={this.playerClicksHeal}>Heal</button>
           </li>
           <li>Special</li>
-          <li>Run</li>
+          <li>
+            <button type="Run" onClick={this.playerClicksRun}>Run</button>
+          </li>
         </ul>
       </section>
     );
