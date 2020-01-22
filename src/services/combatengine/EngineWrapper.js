@@ -76,9 +76,6 @@ class EngineWrapper extends Component {
 
   //PLAYER ACTIONS linked from engine here
   playerTriesToHit = () => {
-    console.log('playerTriesToHit Function');
-    console.log(this.state);
-    console.log(this.state.player);
     this.state.player.attack(this.state.currentEnemy, this.state.currentTurn);
   }
 
