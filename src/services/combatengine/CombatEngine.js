@@ -58,6 +58,14 @@ const CombatEngine = {
     }
   },
 
+  //THESE ARE PLAYER ONLY ACTIONS BELOW
+  run: function(currentEnemy) {
+    //takes the current enemey, and gets rid of it
+    //returns a enemy ran away msgs then a new enemy
+  }
+
+
+  //BELOW ARE ENEMY ONLY ACTIONS
   enemyDeath: function(enemy) {
     let deathReturnObj = {};
     deathReturnObj.enemy = { ...enemy };
