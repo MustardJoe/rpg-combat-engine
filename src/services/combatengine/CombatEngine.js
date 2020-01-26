@@ -69,6 +69,7 @@ const CombatEngine = {
         let randomEnemyNumb = Math.floor(Math.random() * 4);
         runReturnObj.currentEnemy = enemies[randomEnemyNumb];
         runReturnObj.currentCombatMsg = `A ${runReturnObj.currentEnemy.name} begins to attack you!`;
+        console.log('in combatEngine(l72)', runReturnObj);
         return runReturnObj;
       }
       return null;
