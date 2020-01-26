@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 class Actions extends Component {
   static propTypes = {
+    playerTriesToRun: PropTypes.func.isRequired,
     playerTriesToHit: PropTypes.func.isRequired,
     playerTriesToHeal: PropTypes.func.isRequired,
   };
@@ -18,7 +19,7 @@ class Actions extends Component {
   }
 
   playerClicksRun = () => {
-    console.log('you try to run, but this feature is still in development');
+    this.props.playerTriesToRun();
   }
   
   render() {
