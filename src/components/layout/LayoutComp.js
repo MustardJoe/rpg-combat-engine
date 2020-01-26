@@ -7,6 +7,7 @@ import CombatEngine from '../../services/combatengine/CombatEngine';
 import enemies from '../../services/gamedata/Enemies';
 import players from '../../services/gamedata/Players';
 import styles from './layoutcomp.css';
+import Msgs from '../../services/gamedata/Msgs';
 
 class GameLayout extends Component {
   state = {
@@ -27,12 +28,25 @@ class GameLayout extends Component {
 
   //PLAYER ACTIONS linked from engine here
   playerRuns = () => {
-    let playerRunsObj = CombatEngine.player.run(this.state.currentEnemy);
-    
+    let playerRunsObj = CombatEngine.player.run(this.state.currentEnemy); 
+
     let newState = { ...this.state };
     newState.currentEnemy = playerRunsObj.currentEnemy;
     newState.currentCombatMsg = playerRunsObj.currentCombatMsg;
-    newState.currentTurn = CombatEngine.turnSwap();
+    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+    return this.setState({ ...newState });
+  }
+
+  playerTriesToHeal = () => {
+    let playerHealReturnObj = CombatEngine.universalActions.heal(
+      this.state.player,
+      this.state.currentTurn,
+    );
+
+    let newState = { ...this.state };
+    newState.player = playerHealReturnObj.healTarget;
+    newState.currentCombatMsg = playerHealReturnObj.actionMsg;
+    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     return this.setState({ ...newState });
   }
 
@@ -52,18 +66,13 @@ class GameLayout extends Component {
     return this.setState({ ...newState });
   }
 
-  playerTriesToHeal = () => {
-    let playerHealReturnObj = CombatEngine.universalActions.heal(
-      this.state.player,
-      this.state.currentTurn,
-    );
-
-    let newState = { ...this.state };
-    newState.player = playerHealReturnObj.healTarget;
-    newState.currentCombatMsg = playerHealReturnObj.actionMsg;
-    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    return this.setState({ ...newState });
+  playerTriesToRun = () => {
+    this.setState({ currentCombatMsg: Msgs.runMsg });
+    console.log(this.state.currentCombatMsg);
+    // setTimeout(function() { this.playerRuns().bind(this); }, 3000);  //this line runs the timeout, but cant run playerRuns()
+    this.playerRuns(); //this line runs playerRuns() but not timeout 
   }
+
 
   //ENEMY ACTIONS linked from engine here
   enemyTriesToHit = () => {
@@ -115,7 +124,8 @@ class GameLayout extends Component {
         <div className={styles.dashboard}>
           <PlayerStats playerStatsObj={this.state.player} />
           <Actions playerTriesToHit={this.playerTriesToHit} 
-            playerTriesToHeal={this.playerTriesToHeal} />
+            playerTriesToHeal={this.playerTriesToHeal}
+            playerTriesToRun={this.playerTriesToRun} />
           <EnemyComp enemy={this.state.currentEnemy} />
         </div>
       </div>
