@@ -1,4 +1,5 @@
 import Msgs from '../gamedata/Msgs';
+import enemies from '../gamedata/Enemies';
 
 const CombatEngine = {
 
@@ -59,10 +60,20 @@ const CombatEngine = {
   },
 
   //THESE ARE PLAYER ONLY ACTIONS BELOW
-  run: function(currentEnemy) {
-    //takes the current enemey, and gets rid of it
-    //returns a enemy ran away msgs then a new enemy
-  }
+  player: {
+    run: function(currentEnemy) {
+      //takes the current enemey, and gets rid of it
+      //returns a enemy ran away msgs then a new enemy
+      if(currentEnemy.data != 'none') {
+        let runReturnObj = {};
+        let randomEnemyNumb = Math.floor(Math.random() * 4);
+        runReturnObj.currentEnemy = enemies[randomEnemyNumb];
+        runReturnObj.currentCombatMsg = `A ${runReturnObj.currentEnemy.name} begins to attack you!`;
+        return runReturnObj;
+      }
+      return null;
+    }
+  },
 
 
   //BELOW ARE ENEMY ONLY ACTIONS
