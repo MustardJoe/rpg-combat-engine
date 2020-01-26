@@ -26,6 +26,16 @@ class GameLayout extends Component {
   }
 
   //PLAYER ACTIONS linked from engine here
+  playerRuns = () => {
+    let playerRunsObj = CombatEngine.player.run(this.state.currentEnemy);
+    
+    let newState = { ...this.state };
+    newState.currentEnemy = playerRunsObj.currentEnemy;
+    newState.currentCombatMsg = playerRunsObj.currentCombatMsg;
+    newState.currentTurn = CombatEngine.turnSwap();
+    return this.setState({ ...newState });
+  }
+
   playerTriesToHit = () => {
     let playerFightReturnObj = CombatEngine.universalActions.fight(
       this.state.player,
