@@ -14,6 +14,7 @@ const Msgs = {
     enemy: `You have bested your foe! Your enemy falls to
             the ground and explodes in a cloud of glitter!`,
   },
+  runMsg: 'Like a coward, you turn your tail and run from the beast.'
 
 };
 
