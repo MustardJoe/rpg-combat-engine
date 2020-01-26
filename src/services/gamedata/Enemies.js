@@ -1,3 +1,6 @@
+import grindogoomba from '../../assets/grindogoomba.png';
+
+
 const enemies = [
   {
     name: 'Blue Slime',
@@ -30,7 +33,7 @@ const enemies = [
     hitBonus: 0,
     damageD: 1,
     dexterity: 5,
-    img: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20120916174616%2Fmario-enemies%2Fimages%2F9%2F93%2FGoomba2-1-.jpg&f=1&nofb=1',
+    img: grindogoomba,
     healPotions: 0,
     status: 'Normal',
     alive: true,
