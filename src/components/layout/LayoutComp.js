@@ -19,10 +19,12 @@ class GameLayout extends Component {
 
   loadEnemy = () => {
     if(this.state.currentEnemy.data === 'none') {
-      let randomEnemy = Math.floor(Math.random() * 4);
-      return this.setState({ currentEnemy: enemies[randomEnemy],
-        currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!`,
-        battlesFought: this.state.battlesFought + 1 });
+      let randomEnemy = enemies.randomEnemy();
+      return this.setState({ 
+        currentEnemy: randomEnemy,
+        currentCombatMsg: `A ${randomEnemy.name} begins to attack you!`,
+        battlesFought: this.state.battlesFought + 1 
+      });
     }
   }
 

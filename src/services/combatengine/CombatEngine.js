@@ -62,20 +62,15 @@ const CombatEngine = {
   //THESE ARE PLAYER ONLY ACTIONS BELOW
   player: {
     run: function(currentEnemy) {
-      //takes the current enemey, and gets rid of it
-      //returns a enemy ran away msgs then a new enemy
       if(currentEnemy.data != 'none') {
         let runReturnObj = {};
-        let randomEnemyNumb = Math.floor(Math.random() * 4);
-        runReturnObj.currentEnemy = enemies[randomEnemyNumb];
+        runReturnObj.currentEnemy = enemies.randomEnemy();
         runReturnObj.currentCombatMsg = `A ${runReturnObj.currentEnemy.name} begins to attack you!`;
-        console.log('in combatEngine(l72)', runReturnObj);
         return runReturnObj;
       }
       return null;
     }
   },
-
 
   //BELOW ARE ENEMY ONLY ACTIONS
   enemyDeath: function(enemy) {
