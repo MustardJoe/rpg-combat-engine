@@ -1,5 +1,6 @@
 import grindogoomba from '../../assets/grindogoomba.png';
 import grindoninja from '../../assets/grindoninja.png';
+import grindoblueslime from '../../assets/grindoblueslime.png';
 
 const enemies = {
   
@@ -11,7 +12,7 @@ const enemies = {
       hitBonus: 0,
       damageD: 4,
       dexterity: 5,
-      img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2Fec%2F8d%2F07%2Fec8d0767185697a5321b54e32d088299.jpg&f=1&nofb=1',
+      img: grindoblueslime,
       healPotions: 0,
       status: 'Normal',
       alive: true,
