@@ -1,4 +1,5 @@
 import grindogoomba from '../../assets/grindogoomba.png';
+import grindoninja from '../../assets/grindoninja.png';
 
 
 const enemies = [
@@ -45,7 +46,7 @@ const enemies = [
     hitBonus: 5,
     damageD: 25,
     dexterity: 20,
-    img: 'https://naldzgraphics.net/wp-content/uploads/2012/01/1-ninjas.jpg',
+    img: grindoninja,
     healPotions: 0,
     status: 'Normal',
     alive: true,
