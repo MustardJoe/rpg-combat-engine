@@ -40,7 +40,7 @@ const CombatEngine = {
     heal: function(healTarget, currentTurn) {
       let healActionReturnObj = {};
       healActionReturnObj.healTarget = { ...healTarget };
-      let healAmount = CombatEngine.dieRolls.universal(5) + 5;
+      let healAmount = CombatEngine.dieRolls.universal(7) + 5;
 
       if(healTarget.healPotions > 0) {
         healActionReturnObj.actionMsg = Msgs.healMsgs[`${currentTurn}`][0];

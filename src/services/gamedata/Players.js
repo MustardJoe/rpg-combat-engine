@@ -8,7 +8,7 @@ const Players = [
     damageD: 8,
     agility: 15,
     strength: 15,
-    healPotions: 3,
+    healPotions: 5,
     status: 'Normal',
     exp: 0,
     level: 1,
