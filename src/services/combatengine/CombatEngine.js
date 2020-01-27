@@ -69,6 +69,16 @@ const CombatEngine = {
         return runReturnObj;
       }
       return null;
+    },
+    death: function(player, currentEnemy) {
+      if(player.hitPoints <= 0) {
+        let gameOverObj = {
+          currentTurn: 'Game Over',
+          currentEnemy: { ...currentEnemy, img: 'Game Over Img' },
+        };
+        return gameOverObj;
+      }
+      return null;
     }
   },
 
