@@ -72,11 +72,11 @@ const CombatEngine = {
     },
     death: function(player, currentEnemy) {
       if(player.hitPoints <= 0) {
-        let gameOverObj = {
+        let playerDeathObj = {
           currentTurn: 'Game Over',
           currentEnemy: { ...currentEnemy, img: 'Game Over Img' },
         };
-        return gameOverObj;
+        return playerDeathObj;
       }
       return null;
     }
