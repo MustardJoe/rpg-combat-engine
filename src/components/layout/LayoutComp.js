@@ -3,6 +3,7 @@ import Actions from '../actions/Actions';
 import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
 import EnemyComp from '../enemystats/EnemyStats';
+import GameOver from '../gameover/GameOver';
 import CombatEngine from '../../services/combatengine/CombatEngine';
 import enemies from '../../services/gamedata/Enemies';
 import players from '../../services/gamedata/Players';
@@ -98,6 +99,13 @@ class GameLayout extends Component {
   }
 
   componentDidUpdate() {
+    if(this.state.player.hitPoints === 0 && this.state.currentTurn === 'player') {
+      let playerDeathObj = CombatEngine.player.death(this.state.player, this.state.currentEnemy);
+      console.log('hit points 0', this.state.currentTurn);
+      let newState = { ...this.state };
+      newState.currentTurn = playerDeathObj.currentTurn;
+      this.setState({ ...newState });
+    }
     if(this.state.currentTurn === 'enemy' && this.state.currentEnemy.hitPoints > 0) {
       console.log('enemy is trying to hit you');
       this.enemyTriesToHit();
@@ -118,20 +126,27 @@ class GameLayout extends Component {
 
 
   render() {
-    return (
-      <div className={styles.containerStyle}>
-        <MainScreen 
-          currentCombatMsg={this.state.currentCombatMsg}
-          enemyImg={this.state.currentEnemy.img} />
-        <div className={styles.dashboard}>
-          <PlayerStats playerStatsObj={this.state.player} />
-          <Actions playerTriesToHit={this.playerTriesToHit} 
-            playerTriesToHeal={this.playerTriesToHeal}
-            playerTriesToRun={this.playerTriesToRun} />
-          <EnemyComp enemy={this.state.currentEnemy} />
+    let { combatMsg } = this.state;
+    if(combatMsg === 'Game Over') {
+      return <GameOver />;
+    }
+    else {
+      return (
+        <div className={styles.containerStyle}>
+          <MainScreen 
+            currentCombatMsg={this.state.currentCombatMsg}
+            enemyImg={this.state.currentEnemy.img} />
+          <div className={styles.dashboard}>
+            <PlayerStats playerStatsObj={this.state.player} />
+            <Actions playerTriesToHit={this.playerTriesToHit} 
+              playerTriesToHeal={this.playerTriesToHeal}
+              playerTriesToRun={this.playerTriesToRun} />
+            <EnemyComp enemy={this.state.currentEnemy} />
+          </div>
         </div>
-      </div>
-    );
+      );
+
+    }
   }
 }
 
