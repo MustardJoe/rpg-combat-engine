@@ -7,7 +7,11 @@ import styles from './app.css';
 export default function App() {
   return (
     <>
-      <p className={styles.logop}><img src={grindotronlogo} alt="GriNd-O-TRoN" className={styles.logo}></img></p>
+      <p className={styles.logop}>
+        <a href="./">
+          <img src={grindotronlogo} alt="GriNd-O-TRoN" className={styles.logo}></img>
+        </a>
+      </p>
       <h3 className={styles.sublogo}>A turn-based combat engine</h3>
       <LayoutComp />
     </>
