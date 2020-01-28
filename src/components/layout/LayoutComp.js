@@ -4,6 +4,7 @@ import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
 import EnemyComp from '../enemystats/EnemyStats';
 import GameOver from '../gameover/GameOver';
+import BattlesCount from '../battlescount/BattlesCount';
 import CombatEngine from '../../services/combatengine/CombatEngine';
 import enemies from '../../services/gamedata/Enemies';
 import players from '../../services/gamedata/Players';
@@ -142,6 +143,7 @@ class GameLayout extends Component {
               playerTriesToHeal={this.playerTriesToHeal}
               playerTriesToRun={this.playerTriesToRun} />
             <EnemyComp enemy={this.state.currentEnemy} />
+            <BattlesCount count={this.state.battlesFought} />
           </div>
         </div>
       );
