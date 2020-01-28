@@ -8,8 +8,6 @@ function PlayerStats({ playerStatsObj }) {
     hitPoints,
     armorClass,
     hitBonus,
-    agility,
-    strength,
     healPotions,
     status,
   } = playerStatsObj;
@@ -22,8 +20,6 @@ function PlayerStats({ playerStatsObj }) {
         <li>Hit Points: {hitPoints}</li>
         <li>Armor Class: {armorClass}</li>
         <li>Hit Bonus: {hitBonus}</li>
-        <li>Agility: {agility}</li>
-        <li>Strength: {strength}</li>
         <li>Status: {status}</li>
         <li>Potions of Healing: {healPotions}</li>
       </ul>
@@ -37,8 +33,6 @@ PlayerStats.propTypes = {
     hitPoints: PropTypes.number,
     hitBonus: PropTypes.number,
     armorClass: PropTypes.number,
-    agility: PropTypes.number,
-    strength: PropTypes.number,
     healPotions: PropTypes.number,
     status: PropTypes.string,
   })
