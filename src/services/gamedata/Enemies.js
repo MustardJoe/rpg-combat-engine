@@ -1,5 +1,5 @@
 import grindogoomba from '../../assets/grindogoomba.png';
-import grindoninja from '../../assets/grindoninja.png';
+import grindoninja2 from '../../assets/grindoninja2.png';
 import grindoblueslime from '../../assets/grindoblueslime.png';
 
 const enemies = {
@@ -48,7 +48,7 @@ const enemies = {
       hitBonus: 5,
       damageD: 25,
       dexterity: 20,
-      img: grindoninja,
+      img: grindoninja2,
       healPotions: 0,
       status: 'Normal',
       alive: true,
