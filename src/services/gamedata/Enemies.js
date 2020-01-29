@@ -1,6 +1,8 @@
 import grindogoomba from '../../assets/grindogoomba.png';
 import grindoninja2 from '../../assets/grindoninja2.png';
 import grindoblueslime from '../../assets/grindoblueslime.png';
+import grindogoblin from '../../assets/grindogoblin.png';
+import grindogiantant from '../../assets/grindogiantant.png';
 
 const enemies = {
   
@@ -18,13 +20,25 @@ const enemies = {
       alive: true,
     },
     {
+      name: 'Giant Ant',
+      hitPoints: 12,
+      armorClass: 5,
+      hitBonus: 0,
+      damageD: 4,
+      dexterity: 5,
+      img: grindogiantant,
+      healPotions: 0,
+      status: 'Normal',
+      alive: true,
+    },
+    {
       name: 'Goblin',
       hitPoints: 6,
       armorClass: 5,
       hitBonus: 0,
       damageD: 2,
       dexterity: 5,
-      img: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffantasy-faction.com%2Fwp-content%2Fuploads%2F2014%2F10%2FGoblin.jpg&f=1&nofb=1',
+      img: grindogoblin,
       healPotions: 0,
       status: 'Normal',
       alive: true,
