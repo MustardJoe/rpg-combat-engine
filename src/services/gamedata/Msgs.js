@@ -15,7 +15,8 @@ const Msgs = {
       'Oh no… Sadly, you are not victorious in your battle.',
       'You hear an evil laugh: "MUAHAHAHHAHAHAHAHAA...." You are dead.',
       'Here\'s hoping the next adventurer has more luck than you...',
-      'You get dysentery, your oxen have died, and your wagon broke an axel.'],
+      'You get dysentery, your oxen have died, and your wagon broke an axel...',
+      'Thanks for playing, but you died.'],
     enemy: `You have bested your foe! Your enemy falls to
             the ground and explodes in a cloud of glitter!`,
   },
