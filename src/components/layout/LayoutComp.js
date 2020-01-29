@@ -4,7 +4,6 @@ import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
 import EnemyComp from '../enemystats/EnemyStats';
 import GameOver from '../gameover/GameOver';
-import BattlesCount from '../battlescount/BattlesCount';
 import CombatEngine from '../../services/combatengine/CombatEngine';
 import enemies from '../../services/gamedata/Enemies';
 import players from '../../services/gamedata/Players';
@@ -127,28 +126,28 @@ class GameLayout extends Component {
 
 
   render() {
-    let { combatMsg } = this.state;
-    if(combatMsg === 'Game Over') {
+    // let { currentTurn } = this.state;
+    // if(currentTurn === 'Game Over') {
       return <GameOver />;
-    }
-    else {
-      return (
-        <div className={styles.containerStyle}>
-          <MainScreen 
-            currentCombatMsg={this.state.currentCombatMsg}
-            enemyImg={this.state.currentEnemy.img} />
-          <div className={styles.dashboard}>
-            <PlayerStats playerStatsObj={this.state.player} />
-            <Actions playerTriesToHit={this.playerTriesToHit} 
-              playerTriesToHeal={this.playerTriesToHeal}
-              playerTriesToRun={this.playerTriesToRun} />
-            <EnemyComp enemy={this.state.currentEnemy} />
-            <BattlesCount count={this.state.battlesFought} />
-          </div>
-        </div>
-      );
+    // }
+    // else {
+    //   return (
+    //     <div className={styles.containerStyle}>
+    //       <MainScreen 
+    //         currentCombatMsg={this.state.currentCombatMsg}
+    //         enemyImg={this.state.currentEnemy.img}
+    //         count={this.state.battlesFought} />
+    //       <div className={styles.dashboard}>
+    //         <PlayerStats playerStatsObj={this.state.player} />
+    //         <Actions playerTriesToHit={this.playerTriesToHit} 
+    //           playerTriesToHeal={this.playerTriesToHeal}
+    //           playerTriesToRun={this.playerTriesToRun} />
+    //         <EnemyComp enemy={this.state.currentEnemy} />
+    //       </div>
+    //     </div>
+    //   );
 
-    }
+    // }
   }
 }
 
