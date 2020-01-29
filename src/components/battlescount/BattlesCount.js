@@ -5,7 +5,7 @@ import styles from './battlescount.css';
 function BattlesCount({ count }) {
   return (
     <div className={styles.count}>
-      Battles: {count}
+      <span className={styles.text}>Battles: {count}</span>
     </div>
   );
 }
