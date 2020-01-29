@@ -11,3 +11,8 @@
   list-style: none;
   color: green;
 }
+
+.enemyName {
+  font-size: 2em;
+  color: greenyellow;
+}
