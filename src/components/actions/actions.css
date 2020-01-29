@@ -9,4 +9,7 @@
 
 .actionsList {
   list-style: none;
+  li {
+    margin: 1.2em;
+  }
 }
