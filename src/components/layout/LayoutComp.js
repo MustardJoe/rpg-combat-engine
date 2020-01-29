@@ -126,28 +126,28 @@ class GameLayout extends Component {
 
 
   render() {
-    // let { currentTurn } = this.state;
-    // if(currentTurn === 'Game Over') {
+    let { currentTurn } = this.state;
+    if(currentTurn === 'Game Over') {
       return <GameOver />;
-    // }
-    // else {
-    //   return (
-    //     <div className={styles.containerStyle}>
-    //       <MainScreen 
-    //         currentCombatMsg={this.state.currentCombatMsg}
-    //         enemyImg={this.state.currentEnemy.img}
-    //         count={this.state.battlesFought} />
-    //       <div className={styles.dashboard}>
-    //         <PlayerStats playerStatsObj={this.state.player} />
-    //         <Actions playerTriesToHit={this.playerTriesToHit} 
-    //           playerTriesToHeal={this.playerTriesToHeal}
-    //           playerTriesToRun={this.playerTriesToRun} />
-    //         <EnemyComp enemy={this.state.currentEnemy} />
-    //       </div>
-    //     </div>
-    //   );
+    }
+    else {
+      return (
+        <div className={styles.containerStyle}>
+          <MainScreen 
+            currentCombatMsg={this.state.currentCombatMsg}
+            enemyImg={this.state.currentEnemy.img}
+            count={this.state.battlesFought} />
+          <div className={styles.dashboard}>
+            <PlayerStats playerStatsObj={this.state.player} />
+            <Actions playerTriesToHit={this.playerTriesToHit} 
+              playerTriesToHeal={this.playerTriesToHeal}
+              playerTriesToRun={this.playerTriesToRun} />
+            <EnemyComp enemy={this.state.currentEnemy} />
+          </div>
+        </div>
+      );
 
-    // }
+    }
   }
 }
 
