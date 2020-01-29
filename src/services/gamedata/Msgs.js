@@ -10,11 +10,23 @@ const Msgs = {
       'The enemy fails to drink a healing potion'],
   },
   deathMsgs: {
-    player: [],
+    player: ['You were squashed by your foe...', 
+      'You have no more hit points and you have died.',
+      'Oh no… Sadly, you are not victorious in your battle.',
+      'You hear an evil laugh: "MUAHAHAHHAHAHAHAHAA...." You are dead.',
+      'Here\'s hoping the next adventurer has more luck than you...',
+      'You get dysentery, your oxen have died, and your wagon broke an axel.'],
     enemy: `You have bested your foe! Your enemy falls to
             the ground and explodes in a cloud of glitter!`,
   },
-  runMsg: 'Like a coward, you turn your tail and run from the beast.'
+  runMsg: 'Like a coward, you turn your tail and run from the beast.',
+
+  randPlayerDieMsg: function() {
+    let randNumb = Math.floor(Math.random() * (Msgs.deathMsgs.player.length));
+    let Msg = Msgs.deathMsgs.player[randNumb];
+    return Msg;  
+  }
+  
 
 };
 
