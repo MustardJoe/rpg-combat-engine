@@ -83,7 +83,8 @@ const CombatEngine = {
       return null;
     }, 
     levelUp: function(player) {
-      let levelupReturnObj = { ...player };
+      let levelupReturnObj = { };
+      levelupReturnObj.player = { ...player };
       if(player.exp >= 1000 && player.level < 3) {
         levelupReturnObj.player.level = 3;
         levelupReturnObj.player.maxHP += 8;
@@ -115,8 +116,10 @@ const CombatEngine = {
       console.log('enemy exp', enemy.exp);
       deathReturnObj.player.exp += enemy.exp;
       console.log(deathReturnObj.player.exp);
-      let levelUp = CombatEngine.player.levelUp(player);
-      !!levelUp ?
+      let levelUp = CombatEngine.player.levelUp(deathReturnObj.player);
+      if(levelUp) {
+        deathReturnObj.player = { ...levelUp.player };
+      }
       console.log('level up', levelUp);
       deathReturnObj.currentEnemy = { data: 'none' };
       deathReturnObj.currentTurn = 'player';
