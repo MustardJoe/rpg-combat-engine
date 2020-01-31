@@ -16,6 +16,7 @@ const enemies = {
       dexterity: 5,
       img: grindoblueslime,
       healPotions: 0,
+      exp: 500,
       status: 'Normal',
       alive: true,
     },
@@ -29,6 +30,7 @@ const enemies = {
       img: grindogiantant,
       healPotions: 0,
       status: 'Normal',
+      exp: 200,
       alive: true,
     },
     {
@@ -41,6 +43,7 @@ const enemies = {
       img: grindogoblin,
       healPotions: 0,
       status: 'Normal',
+      exp: 100,
       alive: true,
     },
     {
@@ -53,6 +56,7 @@ const enemies = {
       img: grindogoomba,
       healPotions: 0,
       status: 'Normal',
+      exp: 50,
       alive: true,
     },
     {
@@ -65,6 +69,7 @@ const enemies = {
       img: grindoninja2,
       healPotions: 0,
       status: 'Normal',
+      exp: 2000,
       alive: true,
     }
   ],
