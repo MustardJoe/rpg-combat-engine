@@ -111,12 +111,13 @@ class GameLayout extends Component {
       this.enemyTriesToHit();
     }
     else if(this.state.currentEnemy.hitPoints === 0) {
-      let deathReturnObj = CombatEngine.enemyDeath(this.state.currentEnemy);
-      console.log(deathReturnObj);
+      let deathReturnObj = CombatEngine.enemyDeath(this.state.currentEnemy, this.state.player);
+      console.log('death return obj', deathReturnObj);
       let newState = { ...this.state };
       newState.currentEnemy = deathReturnObj.currentEnemy;
+      newState.player = deathReturnObj.player;
       newState.currentTurn = deathReturnObj.currentTurn;
-      newState.combatMsg = deathReturnObj.msg;
+      newState.currentCombatMsg = deathReturnObj.msg;
       this.setState({ ...newState });
     }
     else if(this.state.currentEnemy.data === 'none') {
