@@ -10,6 +10,8 @@ function PlayerStats({ playerStatsObj }) {
     hitBonus,
     healPotions,
     status,
+    level,
+    exp,
   } = playerStatsObj;
 
   return (
@@ -22,6 +24,7 @@ function PlayerStats({ playerStatsObj }) {
         <li>Hit Bonus: {hitBonus}</li>
         <li>Status: {status}</li>
         <li>Potions of Healing: {healPotions}</li>
+        <li>Level: {level} | Exp: {exp}</li>
       </ul>
     </div>
   );
@@ -35,6 +38,8 @@ PlayerStats.propTypes = {
     armorClass: PropTypes.number,
     healPotions: PropTypes.number,
     status: PropTypes.string,
+    level: PropTypes.number,
+    exp: PropTypes.number,
   })
 };
 
