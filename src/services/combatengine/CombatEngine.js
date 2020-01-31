@@ -16,6 +16,7 @@ const CombatEngine = {
     }
   },
 
+  //Shared Actions
   universalActions: {
     fight: function(hitting, beingHit, currentTurn) {
       let fightActionReturnObj = {};
@@ -76,19 +77,47 @@ const CombatEngine = {
           currentTurn: 'Game Over',
           currentEnemy: { ...currentEnemy, img: 'Game Over Img' },
         };
+
         return playerDeathObj;
       }
       return null;
+    }, 
+    levelUp: function(player) {
+      let levelupReturnObj = { ...player };
+      if(player.exp >= 1000 && player.level < 3) {
+        levelupReturnObj.player.level = 3;
+        levelupReturnObj.player.maxHP += 8;
+        levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
+        levelupReturnObj.player.hitBonus += 2;
+        return levelupReturnObj;
+      }
+      if(player.exp >= 500 && player.level < 2) {
+        levelupReturnObj.player.level = 2;
+        levelupReturnObj.player.maxHP += 8;
+        levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
+        levelupReturnObj.player.hitBonus += 2;
+        return levelupReturnObj;
+      }
+      else return null;
     }
   },
 
   //BELOW ARE ENEMY ONLY ACTIONS
-  enemyDeath: function(enemy) {
+  enemyDeath: function(enemy, player) {
     let deathReturnObj = {};
     deathReturnObj.enemy = { ...enemy };
+    deathReturnObj.player = { ...player };
+    
+    
     if(enemy.hitPoints <= 0) {
       deathReturnObj.enemy.alive = false;
       deathReturnObj.msg = Msgs.deathMsgs.enemy;
+      console.log('enemy exp', enemy.exp);
+      deathReturnObj.player.exp += enemy.exp;
+      console.log(deathReturnObj.player.exp);
+      let levelUp = CombatEngine.player.levelUp(player);
+      !!levelUp ?
+      console.log('level up', levelUp);
       deathReturnObj.currentEnemy = { data: 'none' };
       deathReturnObj.currentTurn = 'player';
       return deathReturnObj;
