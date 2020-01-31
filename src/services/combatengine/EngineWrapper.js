@@ -60,15 +60,12 @@ class EngineWrapper extends Component {
 
   loadPlayer = () => {
     let thisPlayer = new Player('Riptor the Sad', 20, 20, 2, 1, 8, 5, 5, 3, 'Normal', true,);
-    console.log('this player, I have a player right here!!', thisPlayer);
     this.setState({ player: thisPlayer });
-    console.log('in load player, i know i have a player, but it didnt take', this.state.player);
   }
 
   loadEnemy = () => {
     if(this.state.currentEnemy.data === 'none') {
       let randomEnemy = Math.floor(Math.random() * 4);
-      /* eslint-disable-next-line no-console */
       return this.setState({ currentEnemy: enemies[randomEnemy],
         currentCombatMsg: `A ${enemies[randomEnemy].name} begins to attack you!` });
     }
