@@ -3,6 +3,9 @@ import grindoninja2 from '../../assets/grindoninja2.png';
 import grindoblueslime from '../../assets/grindoblueslime.png';
 import grindogoblin from '../../assets/grindogoblin.png';
 import grindogiantant from '../../assets/grindogiantant.png';
+import grindoevilmachine from '../../assets/grindoevilmachine.png';
+import grindoskullhead from '../../assets/grindoskullhead.png';
+import grindofloatrobo from '../../assets/grindofloatrobo.png';
 
 const enemies = {
   
@@ -20,6 +23,34 @@ const enemies = {
       status: 'Normal',
       alive: true,
     },
+    {
+      name: 'Evil Machine',
+      hitPoints: 16,
+      armorClass: 5,
+      hitBonus: 0,
+      damageD: 4,
+      dexterity: 5,
+      img: grindoevilmachine,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 350,
+      alive: true,
+    },
+
+    {
+      name: 'Floating Robo',
+      hitPoints: 22,
+      armorClass: 10,
+      hitBonus: 0,
+      damageD: 6,
+      dexterity: 5,
+      img: grindofloatrobo,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 600,
+      alive: true,
+    },
+
     {
       name: 'Giant Ant',
       hitPoints: 12,
@@ -71,7 +102,20 @@ const enemies = {
       status: 'Normal',
       exp: 2000,
       alive: true,
-    }
+    },
+    {
+      name: 'Skull Head',
+      hitPoints: 18,
+      armorClass: 5,
+      hitBonus: 0,
+      damageD: 5,
+      dexterity: 5,
+      img: grindoskullhead,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 175,
+      alive: true,
+    },
   ],
 
   randomEnemy: function() {
