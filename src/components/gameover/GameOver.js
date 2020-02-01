@@ -3,7 +3,7 @@ import Msgs from '../../services/gamedata/Msgs';
 import grindogameover from '../../assets/grindogameover.png';
 import styles from './gameover.css';
 
-let gameOverText = Msgs.randPlayerDieMsg();
+let gameOverText = Msgs.deathMsgs.randPlayerDieMsg();
 
 function GameOver() {
   return (

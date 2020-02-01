@@ -112,7 +112,7 @@ const CombatEngine = {
     
     if(enemy.hitPoints <= 0) {
       deathReturnObj.enemy.alive = false;
-      deathReturnObj.msg = Msgs.deathMsgs.enemy;
+      deathReturnObj.msg = Msgs.deathMsgs.randEnemyDieMsg();
       console.log('enemy exp', enemy.exp);
       deathReturnObj.player.exp += enemy.exp;
       console.log(deathReturnObj.player.exp);
