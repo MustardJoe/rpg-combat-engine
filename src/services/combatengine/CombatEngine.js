@@ -1,5 +1,6 @@
 import Msgs from '../gamedata/Msgs';
 import enemies from '../gamedata/Enemies';
+import ExpTable from '../gamedata/ExpTable';
 
 const CombatEngine = {
 
@@ -83,17 +84,28 @@ const CombatEngine = {
       return null;
     }, 
     levelUp: function(player) {
+      
       let levelupReturnObj = { };
       levelupReturnObj.player = { ...player };
-      if(player.exp >= 1000 && player.level < 3) {
-        levelupReturnObj.player.level = 3;
-        levelupReturnObj.player.maxHP += 8;
-        levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
-        levelupReturnObj.player.hitBonus += 2;
-        return levelupReturnObj;
-      }
-      if(player.exp >= 500 && player.level < 2) {
-        levelupReturnObj.player.level = 2;
+      // if(player.exp >= 1000 && player.level < 3) {
+      //   levelupReturnObj.player.level = 3;
+      //   levelupReturnObj.player.maxHP += 8;
+      //   levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
+      //   levelupReturnObj.player.hitBonus += 2;
+      //   return levelupReturnObj;
+      // }
+      // if(player.exp >= 500 && player.level < 2) {
+      //   levelupReturnObj.player.level = 2;
+      //   levelupReturnObj.player.maxHP += 8;
+      //   levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
+      //   levelupReturnObj.player.hitBonus += 2;
+      //   return levelupReturnObj;
+      // }
+
+      if(player.exp >= ExpTable[player.level + 1] 
+        && player.level < Object.keys(ExpTable)[player.level])
+      {    
+        levelupReturnObj.player.level++;
         levelupReturnObj.player.maxHP += 8;
         levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
         levelupReturnObj.player.hitBonus += 2;
