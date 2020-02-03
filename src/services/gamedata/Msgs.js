@@ -17,7 +17,7 @@ const Msgs = {
       'Here\'s hoping the next adventurer has more luck...',
       'You get dysentery, your oxen have died, and your wagon broke an axel...',
       'Thanks for playing, but you died.',
-      'Your sould was consumed by the evil!'],
+      'Your soul was consumed by the evil!'],
     enemy: [
       `You have bested your foe! Your enemy falls to
             the ground and explodes in a cloud of glitter!`,
