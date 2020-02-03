@@ -6,10 +6,25 @@ import grindogiantant from '../../assets/grindogiantant.png';
 import grindoevilmachine from '../../assets/grindoevilmachine.png';
 import grindoskullhead from '../../assets/grindoskullhead.png';
 import grindofloatrobo from '../../assets/grindofloatrobo.png';
+import grindobadevilknight from '../../assets/grindobadevilknight.png';
+import grindogoodevilknight from '../../assets/grindogoodevilknight.png';
 
 const enemies = {
   
   enemyList: [
+    {
+      name: 'Bad Evil Knight',
+      hitPoints: 12,
+      armorClass: 6,
+      hitBonus: 0,
+      damageD: 5,
+      dexterity: 5,
+      img: grindobadevilknight,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 200,
+      alive: true,
+    },
     {
       name: 'Blue Slime',
       hitPoints: 50,
@@ -50,7 +65,6 @@ const enemies = {
       exp: 600,
       alive: true,
     },
-
     {
       name: 'Giant Ant',
       hitPoints: 12,
@@ -75,6 +89,19 @@ const enemies = {
       healPotions: 0,
       status: 'Normal',
       exp: 100,
+      alive: true,
+    },
+    {
+      name: 'Good Evil Knight',
+      hitPoints: 12,
+      armorClass: 6,
+      hitBonus: 0,
+      damageD: -5,
+      dexterity: 5,
+      img: grindobadevilknight,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 200,
       alive: true,
     },
     {
