@@ -98,7 +98,7 @@ const enemies = {
       hitBonus: 0,
       damageD: -5,
       dexterity: 5,
-      img: grindobadevilknight,
+      img: grindogoodevilknight,
       healPotions: 0,
       status: 'Normal',
       exp: 200,
