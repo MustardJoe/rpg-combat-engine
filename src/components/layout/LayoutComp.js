@@ -65,8 +65,13 @@ class GameLayout extends Component {
     let newState = { ...this.state };
     newState.currentEnemy = playerFightReturnObj.beingHit;
     newState.currentCombatMsg = playerFightReturnObj.combatMsg;
-    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    return this.setState({ ...newState });
+    this.setState({ ...newState }, () => {
+      setTimeout(() => {
+        newState = { ...this.state };
+        newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+        this.setState({ ...newState });
+      }, 1500);
+    });
   }
 
   playerTriesToRun = () => {
