@@ -87,21 +87,6 @@ const CombatEngine = {
       
       let levelupReturnObj = { };
       levelupReturnObj.player = { ...player };
-      // if(player.exp >= 1000 && player.level < 3) {
-      //   levelupReturnObj.player.level = 3;
-      //   levelupReturnObj.player.maxHP += 8;
-      //   levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
-      //   levelupReturnObj.player.hitBonus += 2;
-      //   return levelupReturnObj;
-      // }
-      // if(player.exp >= 500 && player.level < 2) {
-      //   levelupReturnObj.player.level = 2;
-      //   levelupReturnObj.player.maxHP += 8;
-      //   levelupReturnObj.player.hitPoints = levelupReturnObj.player.maxHP;
-      //   levelupReturnObj.player.hitBonus += 2;
-      //   return levelupReturnObj;
-      // }
-
       if(player.exp >= ExpTable[player.level + 1] 
         && player.level < Object.keys(ExpTable)[player.level])
       {    
