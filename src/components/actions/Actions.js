@@ -37,12 +37,12 @@ class Actions extends Component {
   }
 
   componentDidUpdate() {
-    // if(this.props.actionButtons === 'enable') {
-    //   this.enableAllButtons();
-    // }
-    // if(this.props.actionButtons === 'disable') {
-    //   this.disableAllButtons();
-    // }
+    if(this.props.actionButtons === 'enable') {
+      this.enableAllButtons();
+    }
+    if(this.props.actionButtons === 'disable') {
+      this.disableAllButtons();
+    }
   }
   
   render() {
