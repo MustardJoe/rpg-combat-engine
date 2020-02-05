@@ -16,6 +16,11 @@ class GameLayout extends Component {
     player: players[0],
     battlesFought: 0,
     currentTurn: 'player',
+    // actionButtons: 'enable',
+  };
+
+  notState = {
+    actionButtons: 'enable',
   };
 
   loadEnemy = () => {
@@ -54,6 +59,12 @@ class GameLayout extends Component {
   }
 
   playerTriesToHit = () => {
+    // this.setState({ actionButtons: 'disable' });
+    // console.log('buttons shoudl be disabled, layoutcomp line 59:', this.state.actionButtons);
+
+    this.notState.actionButtons = 'disable';
+    console.log(this.notState);
+
     let playerFightReturnObj = CombatEngine.universalActions.fight(
       this.state.player,
       this.state.currentEnemy,
@@ -96,6 +107,10 @@ class GameLayout extends Component {
     newState.player = enemyFightReturnObj.beingHit;
     newState.currentCombatMsg = enemyFightReturnObj.combatMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+
+    //here needs help
+    // newState.actionButtons = 'enable';
+    this.notState.actionButtons = 'enable';
     return this.setState({ ...newState });
   }
 
@@ -147,7 +162,8 @@ class GameLayout extends Component {
             <PlayerStats playerStatsObj={this.state.player} />
             <Actions playerTriesToHit={this.playerTriesToHit} 
               playerTriesToHeal={this.playerTriesToHeal}
-              playerTriesToRun={this.playerTriesToRun} />
+              playerTriesToRun={this.playerTriesToRun} 
+              actionButtons={this.notState.actionButtons} />
             <EnemyComp enemy={this.state.currentEnemy} />
           </div>
         </div>
