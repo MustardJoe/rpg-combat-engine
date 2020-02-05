@@ -34,6 +34,7 @@ class Actions extends Component {
             <button type="Heal" onClick={this.playerClicksHeal}>Heal</button>
           </li>
           <li>Special</li>
+          <li>Defend</li>
           <li>
             <button type="Run" onClick={this.playerClicksRun}>Run</button>
           </li>
