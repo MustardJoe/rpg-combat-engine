@@ -2,24 +2,12 @@ import React from 'react';
 import styles from './enemystats.css';
 import PropTypes from 'prop-types';
 
-// shape of enemy obj below:
-// name: 'Goomba',
-// damage: 1,
-// strengthBonus: 0,
-// armorClass: 1,
-// armor: 0,
-// dexterity: 5,
-// hitPoints: 2,
-// healPotions: 3,
-// status: 'Normal',
-// alive: true,
-
-
 function EnemyComp({ enemy }) {
   const {
     name,
     hitPoints,
     armorClass,
+    damageD,
   } = enemy;
 
   return (
@@ -27,8 +15,9 @@ function EnemyComp({ enemy }) {
       <p>Current Enemy:</p>
       <p className={styles.enemyName}>{name}</p>
       <ul className={styles.statsList}>
-        <li>HP: {hitPoints}</li>
-        <li>AC: {armorClass}</li>
+        <li>Hit Points: {hitPoints}</li>
+        <li>Armor Class: {armorClass}</li>
+        <li>Damage: 1d{damageD}</li>
         <li>Special - Not yet implemented</li>
       </ul>
     </section>
