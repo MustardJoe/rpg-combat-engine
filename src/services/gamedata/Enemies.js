@@ -40,10 +40,10 @@ const enemies = {
     },
     {
       name: 'Evil Machine',
-      hitPoints: 16,
+      hitPoints: 18,
       armorClass: 5,
       hitBonus: 0,
-      damageD: 4,
+      damageD: 5,
       dexterity: 5,
       img: grindoevilmachine,
       healPotions: 0,
