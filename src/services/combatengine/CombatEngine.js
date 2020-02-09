@@ -75,6 +75,7 @@ const CombatEngine = {
         specialReturnObj.combatMsg = Msgs.specialMsgs[`${currentTurn}`].use;
         specialReturnObj.beingHit = { ...beingHit };
         specialReturnObj.beingHit.hitPoints -= damage;
+        if(specialReturnObj.beingHit.hitPoints < 0) specialReturnObj.beingHit.hitPoints = 0;
         specialReturnObj.hitting = { ...hitting };
         specialReturnObj.hitting.special.remaining--;
         
