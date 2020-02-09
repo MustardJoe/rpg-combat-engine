@@ -61,7 +61,6 @@ class GameLayout extends Component {
   playerTriesToHit = () => {
     // this.setState({ actionButtons: 'disable' });
     // console.log('buttons shoudl be disabled, layoutcomp line 59:', this.state.actionButtons);
-
     this.notState.actionButtons = 'disable';
     console.log(this.notState);
 
@@ -71,7 +70,6 @@ class GameLayout extends Component {
       this.state.currentTurn,
     );
 
-    /* eslint-disable-next-line no-console */
     console.log('playerFightReturnObj', playerFightReturnObj);
     let newState = { ...this.state };
     newState.currentEnemy = playerFightReturnObj.beingHit;
@@ -114,6 +112,7 @@ class GameLayout extends Component {
     return this.setState({ ...newState });
   }
 
+  //Lifecyle related stuff
   componentDidMount() {
     this.loadEnemy();
   }
