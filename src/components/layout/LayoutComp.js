@@ -45,6 +45,20 @@ class GameLayout extends Component {
     return this.setState({ ...newState });
   }
 
+  playerTriesSpecial = () => {
+    let specialReturnObj = CombatEngine.universalActions.special(
+      this.state.player, this.state.currentEnemy, this.state.currentTurn
+    );
+
+    let newState = { ...this.state };
+    newState.currentEnemy = specialReturnObj.beingHit;
+    newState.player = specialReturnObj.hitting;
+    newState.currentCombatMsg = specialReturnObj.combatMsg;
+    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+    console.log('newState in Special', newState);
+    return this.setState({ ...newState });
+  }
+
   playerTriesToHeal = () => {
     let playerHealReturnObj = CombatEngine.universalActions.heal(
       this.state.player,
@@ -161,6 +175,7 @@ class GameLayout extends Component {
             <PlayerStats playerStatsObj={this.state.player} />
             <Actions playerTriesToHit={this.playerTriesToHit} 
               playerTriesToHeal={this.playerTriesToHeal}
+              playerTriesSpecial={this.playerTriesSpecial}
               playerTriesToRun={this.playerTriesToRun} 
               actionButtons={this.notState.actionButtons} />
             <EnemyComp enemy={this.state.currentEnemy} />
