@@ -8,6 +8,7 @@ class Actions extends Component {
     playerTriesToRun: PropTypes.func.isRequired,
     playerTriesToHit: PropTypes.func.isRequired,
     playerTriesToHeal: PropTypes.func.isRequired,
+    playerTriesSpecial: PropTypes.func.isRequired,
     actionButtons: PropTypes.string.isRequired,
   };
 
@@ -15,12 +16,14 @@ class Actions extends Component {
     document.getElementById('fightButton').disabled = true;
     document.getElementById('healButton').disabled = true;
     document.getElementById('runButton').disabled = true;
+    document.getElementById('specialButton').disabled = true;
   }
 
   enableAllButtons = () => {
     document.getElementById('fightButton').disabled = false;
     document.getElementById('healButton').disabled = false;
     document.getElementById('runButton').disabled = false;
+    document.getElementById('specialButton').disabled = false;
   }
 
   playerClicksFight = () => {
@@ -30,10 +33,15 @@ class Actions extends Component {
 
   playerClicksHeal = () => {
     this.props.playerTriesToHeal();
+    this.disableAllButtons();
   }
 
   playerClicksRun = () => {
     this.props.playerTriesToRun();
+  }
+
+  playerClicksSpecial = () => {
+    this.props.playerTriesSpecial();
   }
 
   componentDidUpdate() {
@@ -56,7 +64,9 @@ class Actions extends Component {
           <li>
             <button type="Heal" id="healButton" onClick={this.playerClicksHeal}>Heal</button>
           </li>
-          <li>Special</li>
+          <li>
+            <button type="Special" id="specialButton" onClick={this.playerClicksSpecial}>Special</button>
+          </li>
           <li>Defend</li>
           <li>
             <button type="Run" id="runButton" onClick={this.playerClicksRun}>Run</button>
