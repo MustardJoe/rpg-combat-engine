@@ -121,11 +121,6 @@ const CombatEngine = {
       }
       else return null;
     },
-    playerSpecial: function(player) {
-      let playerSpecialReturnObj = {};
-
-      return playerSpecialReturnObj;
-    }
   },
 
   //BELOW ARE ENEMY ONLY ACTIONS
