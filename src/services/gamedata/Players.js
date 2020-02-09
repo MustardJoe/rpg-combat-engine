@@ -13,6 +13,12 @@ const Players = [
     exp: 0,
     level: 1,
     alive: true,
+    special: {
+      remaining: 3,
+      specialDamage: 15,
+      specialBonus: 5, 
+
+    }
   }
 ];
 

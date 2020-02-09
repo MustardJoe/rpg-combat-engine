@@ -58,6 +58,29 @@ const CombatEngine = {
         healActionReturnObj.healTarget.healPotions = 0;
       }
       return healActionReturnObj;
+    },
+    special: function(hitting, beingHit, currentTurn) {
+      let specialReturnObj = {};
+      let thisRoll = CombatEngine.dieRolls.d20() + hitting.special.specialBonus;
+      let damage = CombatEngine.dieRolls.universal(hitting.special.specialDamage) 
+        + hitting.special.specialBonus;
+
+      if(hitting.special.remaining <= 0) {
+        specialReturnObj.combatMsg = Msgs.specialMsgs[`${currentTurn}`].noUse;
+        specialReturnObj.beingHit = { ...beingHit };
+        specialReturnObj.hitting = { ...hitting };
+        return specialReturnObj;
+      }
+      if(thisRoll >= beingHit.armorClass && hitting.special.remaining > 0) {
+        specialReturnObj.combatMsg = Msgs.specialMsgs[`${currentTurn}`].use;
+        specialReturnObj.beingHit = { ...beingHit };
+        specialReturnObj.beingHit.hitPoints -= damage;
+        specialReturnObj.hitting = { ...hitting };
+        specialReturnObj.hitting.special.remaining--;
+        
+        return specialReturnObj;
+      }
+      return null;
     }
   },
 
@@ -97,6 +120,11 @@ const CombatEngine = {
         return levelupReturnObj;
       }
       else return null;
+    },
+    playerSpecial: function(player) {
+      let playerSpecialReturnObj = {};
+
+      return playerSpecialReturnObj;
     }
   },
 

@@ -37,6 +37,14 @@ const Msgs = {
     }
   },
   runMsg: 'Like a coward, you turn your tail and run from the beast.',
+  specialMsgs: {
+    player: {
+      use: 'You use your special action to *hopefully* inflict massive damage!',
+      noUse: 'You try to use your special action, but your energy for that move is depleted.',
+    }
+  }
+  
+
 };
 
 export default Msgs;
