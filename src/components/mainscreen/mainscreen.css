@@ -11,7 +11,7 @@
 }
 
 .img {
-  max-width: 20vh;
+  max-width: 20vw;
   display: inline-block;
 }
 
@@ -22,5 +22,5 @@
 }
 
 .screenMsg {
-  margin-top: 0;
+  margin-top: 0.5em;
 }
