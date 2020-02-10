@@ -169,8 +169,7 @@ class GameLayout extends Component {
         <div className={styles.containerStyle}>
           <MainScreen 
             currentCombatMsg={this.state.currentCombatMsg}
-            enemyImg={this.state.currentEnemy.img}
-            count={this.state.battlesFought} />
+            enemyImg={this.state.currentEnemy.img} />
           <div className={styles.dashboard}>
             <PlayerStats playerStatsObj={this.state.player} />
             <Actions playerTriesToHit={this.playerTriesToHit} 
@@ -178,7 +177,8 @@ class GameLayout extends Component {
               playerTriesSpecial={this.playerTriesSpecial}
               playerTriesToRun={this.playerTriesToRun} 
               actionButtons={this.notState.actionButtons} />
-            <EnemyComp enemy={this.state.currentEnemy} />
+            <EnemyComp enemy={this.state.currentEnemy}
+              count={this.state.battlesFought} />
           </div>
         </div>
       );

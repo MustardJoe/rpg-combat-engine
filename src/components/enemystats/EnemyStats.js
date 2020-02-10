@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './enemystats.css';
 import PropTypes from 'prop-types';
+import BattlesCount from '../battlescount/BattlesCount';
 
-function EnemyComp({ enemy }) {
+function EnemyComp({ enemy, count }) {
   const {
     name,
     hitPoints,
@@ -20,12 +21,14 @@ function EnemyComp({ enemy }) {
         <li>Damage: 1d{damageD}</li>
         <li>Special - Not yet implemented</li>
       </ul>
+      <p><BattlesCount count={count} /></p>
     </section>
   );
 }
 
 EnemyComp.propTypes = {
   enemy: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 export default EnemyComp;
