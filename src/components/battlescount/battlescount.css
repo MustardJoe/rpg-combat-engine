@@ -1,12 +1,15 @@
 .count {
+  float: left;
   border: solid 2px mediumseagreen;
   border-radius: 2em;
   width: 8em;
   height: 1.8em;
+  margin-left: 8vw;
+  margin-right: auto;
 }
 
 .text {
   vertical-align: middle;
-  padding-top: .5em;
+  padding: .5em;
 }
 

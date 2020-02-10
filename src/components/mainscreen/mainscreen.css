@@ -3,13 +3,24 @@
   background-color: black;
   color: green;
   border: solid 2px greenyellow;
-  min-width: 68vw;
-  min-height: 16vh;
-  padding: 2em;
-  font-size: 1.6em;
+  min-width: 48vw;
+  min-height: 24vh;
+  padding: 0.5em;
+  font-size: 1.4em;
   border-radius: 2em;
 }
 
 .img {
-  max-height: 20vh;
+  max-width: 20vh;
+  display: inline-block;
+}
+
+.battleCount {
+  vertical-align: top;
+  
+  float: left;
+}
+
+.screenMsg {
+  margin-top: 0;
 }
