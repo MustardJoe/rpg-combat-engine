@@ -19,10 +19,8 @@ class GameLayout extends Component {
     playerMadeChoice: false
   };
 
-  notState = {
-    actionButtons: 'enable',
-  };
 
+  // Helper Functions
   loadEnemy = () => {
     if(this.state.currentEnemy.data === 'none') {
       let randomEnemy = enemies.randomEnemy();
@@ -33,30 +31,50 @@ class GameLayout extends Component {
       });
     }
   }
+  
+  buttonsEnabled = () => {
+    this.setState({ playerMadeChoice: false });
+  }
 
+  asyncStateReturn = (newState) => {
+    this.setState({ ...newState }, () => {
+      setTimeout(() => {
+        newState = { ...this.state };
+        newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+        this.setState({ ...newState }, this.buttonsEnabled);
+      }, 1500);
+    });
+  }
+  
+  
   //PLAYER ACTIONS linked from engine here
   playerRuns = () => {
     let playerRunsObj = CombatEngine.player.run(this.state.currentEnemy); 
 
     let newState = { ...this.state };
+    newState.playerMadeChoice = true;
     newState.currentEnemy = playerRunsObj.currentEnemy;
     newState.currentCombatMsg = playerRunsObj.currentCombatMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    return this.setState({ ...newState });
+    // return this.setState({ ...newState });
+    this.asyncStateReturn(newState);
   }
 
   playerTriesSpecial = () => {
     let specialReturnObj = CombatEngine.universalActions.special(
-      this.state.player, this.state.currentEnemy, this.state.currentTurn
+      this.state.player,
+      this.state.currentEnemy,
+      this.state.currentTurn
     );
 
     let newState = { ...this.state };
+    newState.playerMadeChoice = true;
     newState.currentEnemy = specialReturnObj.beingHit;
     newState.player = specialReturnObj.hitting;
     newState.currentCombatMsg = specialReturnObj.combatMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     console.log('newState in Special', newState);
-    return this.setState({ ...newState });
+    this.asyncStateReturn(newState);
   }
 
   playerTriesToHeal = () => {
@@ -66,15 +84,15 @@ class GameLayout extends Component {
     );
 
     let newState = { ...this.state };
+    newState.playerMadeChoice = true;
     newState.player = playerHealReturnObj.healTarget;
     newState.currentCombatMsg = playerHealReturnObj.actionMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    return this.setState({ ...newState });
+    // return this.setState({ ...newState });
+    this.asyncStateReturn(newState);
   }
 
   playerTriesToHit = () => {
-
-
     let playerFightReturnObj = CombatEngine.universalActions.fight(
       this.state.player,
       this.state.currentEnemy,
@@ -86,18 +104,16 @@ class GameLayout extends Component {
     newState.playerMadeChoice = true;
     newState.currentEnemy = playerFightReturnObj.beingHit;
     newState.currentCombatMsg = playerFightReturnObj.combatMsg;
-    this.setState({ ...newState }, () => {
-      setTimeout(() => {
-        newState = { ...this.state };
-        newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-        this.setState({ ...newState }, this.buttonsEnabled);
-      }, 1500);
-    });
+    // this.setState({ ...newState }, () => {
+    //   setTimeout(() => {
+    //     newState = { ...this.state };
+    //     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+    //     this.setState({ ...newState }, this.buttonsEnabled);
+    //   }, 1500);
+    // });
+    this.asyncStateReturn(newState);
   }
 
-  buttonsEnabled = () => {
-    this.setState({ playerMadeChoice: false });
-  }
 
   playerTriesToRun = () => {
     this.setState({ currentCombatMsg: Msgs.runMsg });
@@ -122,9 +138,6 @@ class GameLayout extends Component {
     newState.currentCombatMsg = enemyFightReturnObj.combatMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
 
-    //here needs help
-    // newState.actionButtons = 'enable';
-    this.notState.actionButtons = 'enable';
     return this.setState({ ...newState });
   }
 

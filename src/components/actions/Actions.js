@@ -28,12 +28,12 @@ class Actions extends Component {
 
   playerClicksFight = () => {
     this.props.playerTriesToHit();
-    this.disableAllButtons();
+    // this.disableAllButtons();
   }
 
   playerClicksHeal = () => {
     this.props.playerTriesToHeal();
-    this.disableAllButtons();
+    // this.disableAllButtons();
   }
 
   playerClicksRun = () => {
@@ -44,14 +44,14 @@ class Actions extends Component {
     this.props.playerTriesSpecial();
   }
 
-  componentDidUpdate() {
-    if(this.props.actionButtons === 'enable') {
-      this.enableAllButtons();
-    }
-    if(this.props.actionButtons === 'disable') {
-      this.disableAllButtons();
-    }
-  }
+  // componentDidUpdate() {
+  //   if(this.props.actionButtons === 'enable') {
+  //     this.enableAllButtons();
+  //   }
+  //   if(this.props.actionButtons === 'disable') {
+  //     this.disableAllButtons();
+  //   }
+  // }
   
   render() {
     return (
@@ -65,14 +65,21 @@ class Actions extends Component {
               disabled={this.props.playerMadeChoice}>Fight</button>
           </li>
           <li>
-            <button type="Heal" id="healButton" onClick={this.playerClicksHeal}>Heal</button>
+            <button type="Heal" 
+              style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}} 
+              id="healButton" onClick={this.playerClicksHeal}
+              disabled={this.props.playerMadeChoice}>Heal</button>
           </li>
           <li>
-            <button type="Special" id="specialButton" onClick={this.playerClicksSpecial}>Special</button>
+            <button type="Special" style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}} 
+              id="specialButton" onClick={this.playerClicksSpecial}
+              disabled={this.props.playerMadeChoice}>Special</button>
           </li>
           <li>Defend</li>
           <li>
-            <button type="Run" id="runButton" onClick={this.playerClicksRun}>Run</button>
+            <button type="Run" style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}} 
+              id="runButton" onClick={this.playerClicksRun}
+              disabled={this.props.playerMadeChoice}>Run</button>
           </li>
         </ul>
       </section>
