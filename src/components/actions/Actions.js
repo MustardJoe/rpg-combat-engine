@@ -12,20 +12,6 @@ class Actions extends Component {
     playerMadeChoice: PropTypes.bool.isRequired,
   };
 
-  disableAllButtons = () => {
-    document.getElementById('fightButton').disabled = true;
-    document.getElementById('healButton').disabled = true;
-    document.getElementById('runButton').disabled = true;
-    document.getElementById('specialButton').disabled = true;
-  }
-
-  enableAllButtons = () => {
-    document.getElementById('fightButton').disabled = false;
-    document.getElementById('healButton').disabled = false;
-    document.getElementById('runButton').disabled = false;
-    document.getElementById('specialButton').disabled = false;
-  }
-
   playerClicksFight = () => {
     this.props.playerTriesToHit();
     // this.disableAllButtons();
@@ -43,15 +29,6 @@ class Actions extends Component {
   playerClicksSpecial = () => {
     this.props.playerTriesSpecial();
   }
-
-  // componentDidUpdate() {
-  //   if(this.props.actionButtons === 'enable') {
-  //     this.enableAllButtons();
-  //   }
-  //   if(this.props.actionButtons === 'disable') {
-  //     this.disableAllButtons();
-  //   }
-  // }
   
   render() {
     return (
