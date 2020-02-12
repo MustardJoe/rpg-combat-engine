@@ -16,7 +16,7 @@ class GameLayout extends Component {
     player: players[0],
     battlesFought: 0,
     currentTurn: 'player',
-    // actionButtons: 'enable',
+    playerMadeChoice: false
   };
 
   notState = {
@@ -73,10 +73,7 @@ class GameLayout extends Component {
   }
 
   playerTriesToHit = () => {
-    // this.setState({ actionButtons: 'disable' });
-    // console.log('buttons shoudl be disabled, layoutcomp line 59:', this.state.actionButtons);
-    this.notState.actionButtons = 'disable';
-    console.log(this.notState);
+
 
     let playerFightReturnObj = CombatEngine.universalActions.fight(
       this.state.player,
@@ -86,15 +83,20 @@ class GameLayout extends Component {
 
     console.log('playerFightReturnObj', playerFightReturnObj);
     let newState = { ...this.state };
+    newState.playerMadeChoice = true;
     newState.currentEnemy = playerFightReturnObj.beingHit;
     newState.currentCombatMsg = playerFightReturnObj.combatMsg;
     this.setState({ ...newState }, () => {
       setTimeout(() => {
         newState = { ...this.state };
         newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-        this.setState({ ...newState });
+        this.setState({ ...newState }, this.buttonsEnabled);
       }, 1500);
     });
+  }
+
+  buttonsEnabled = () => {
+    this.setState({ playerMadeChoice: false });
   }
 
   playerTriesToRun = () => {
@@ -176,7 +178,7 @@ class GameLayout extends Component {
               playerTriesToHeal={this.playerTriesToHeal}
               playerTriesSpecial={this.playerTriesSpecial}
               playerTriesToRun={this.playerTriesToRun} 
-              actionButtons={this.notState.actionButtons} />
+              playerMadeChoice={this.state.playerMadeChoice} />
             <EnemyComp enemy={this.state.currentEnemy}
               count={this.state.battlesFought} />
           </div>
