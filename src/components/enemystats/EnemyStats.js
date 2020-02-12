@@ -19,7 +19,6 @@ function EnemyComp({ enemy, count }) {
         <li>Hit Points: {hitPoints}</li>
         <li>Armor Class: {armorClass}</li>
         <li>Damage: 1d{damageD}</li>
-        <li>Special - Not yet implemented</li>
       </ul>
       <p><BattlesCount count={count} /></p>
     </section>
