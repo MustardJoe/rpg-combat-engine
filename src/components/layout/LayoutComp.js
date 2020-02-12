@@ -55,7 +55,7 @@ class GameLayout extends Component {
     newState.playerMadeChoice = true;
     newState.currentEnemy = playerRunsObj.currentEnemy;
     newState.currentCombatMsg = playerRunsObj.currentCombatMsg;
-    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+    // newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     // return this.setState({ ...newState });
     this.asyncStateReturn(newState);
   }
@@ -72,7 +72,7 @@ class GameLayout extends Component {
     newState.currentEnemy = specialReturnObj.beingHit;
     newState.player = specialReturnObj.hitting;
     newState.currentCombatMsg = specialReturnObj.combatMsg;
-    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+    // newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     console.log('newState in Special', newState);
     this.asyncStateReturn(newState);
   }
@@ -87,7 +87,7 @@ class GameLayout extends Component {
     newState.playerMadeChoice = true;
     newState.player = playerHealReturnObj.healTarget;
     newState.currentCombatMsg = playerHealReturnObj.actionMsg;
-    newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+    // newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
     // return this.setState({ ...newState });
     this.asyncStateReturn(newState);
   }
@@ -104,22 +104,13 @@ class GameLayout extends Component {
     newState.playerMadeChoice = true;
     newState.currentEnemy = playerFightReturnObj.beingHit;
     newState.currentCombatMsg = playerFightReturnObj.combatMsg;
-    // this.setState({ ...newState }, () => {
-    //   setTimeout(() => {
-    //     newState = { ...this.state };
-    //     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    //     this.setState({ ...newState }, this.buttonsEnabled);
-    //   }, 1500);
-    // });
     this.asyncStateReturn(newState);
   }
 
-
   playerTriesToRun = () => {
     this.setState({ currentCombatMsg: Msgs.runMsg });
-    console.log(this.state.currentCombatMsg);
-    // setTimeout(function() { this.playerRuns().bind(this); }, 3000);  //this line runs the timeout, but cant run playerRuns()
-    this.playerRuns(); //this line runs playerRuns() but not timeout 
+    console.log('playerTriesToRun', this.state.currentCombatMsg);
+    this.playerRuns();
   }
 
 
