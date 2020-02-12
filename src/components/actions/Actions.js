@@ -9,7 +9,7 @@ class Actions extends Component {
     playerTriesToHit: PropTypes.func.isRequired,
     playerTriesToHeal: PropTypes.func.isRequired,
     playerTriesSpecial: PropTypes.func.isRequired,
-    actionButtons: PropTypes.string.isRequired,
+    playerMadeChoice: PropTypes.bool.isRequired,
   };
 
   disableAllButtons = () => {
@@ -59,7 +59,10 @@ class Actions extends Component {
         Player Actions
         <ul className={styles.actionsList}>
           <li>
-            <button type="Fight" id="fightButton" onClick={this.playerClicksFight}>Fight</button>
+            <button type="Fight" 
+              style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}}
+              id="fightButton" onClick={this.playerClicksFight}
+              disabled={this.props.playerMadeChoice}>Fight</button>
           </li>
           <li>
             <button type="Heal" id="healButton" onClick={this.playerClicksHeal}>Heal</button>
