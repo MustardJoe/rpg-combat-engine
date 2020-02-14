@@ -37,24 +37,24 @@ class Actions extends Component {
         <ul className={styles.actionsList}>
           <li>
             <button type="Fight" 
-              style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}}
+              style={this.props.playerMadeChoice ? { backgroundColor : 'yellow' } : {}}
               id="fightButton" onClick={this.playerClicksFight}
               disabled={this.props.playerMadeChoice}>Fight</button>
           </li>
           <li>
             <button type="Heal" 
-              style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}} 
+              style={this.props.playerMadeChoice ? { backgroundColor : 'yellow' } : {}} 
               id="healButton" onClick={this.playerClicksHeal}
               disabled={this.props.playerMadeChoice}>Heal</button>
           </li>
           <li>
-            <button type="Special" style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}} 
+            <button type="Special" style={this.props.playerMadeChoice ? { backgroundColor : 'yellow' } : {}} 
               id="specialButton" onClick={this.playerClicksSpecial}
               disabled={this.props.playerMadeChoice}>Special</button>
           </li>
           <li>Defend</li>
           <li>
-            <button type="Run" style={this.props.playerMadeChoice ? {backgroundColor : 'yellow' } : {}} 
+            <button type="Run" style={this.props.playerMadeChoice ? { backgroundColor : 'yellow' } : {}} 
               id="runButton" onClick={this.playerClicksRun}
               disabled={this.props.playerMadeChoice}>Run</button>
           </li>

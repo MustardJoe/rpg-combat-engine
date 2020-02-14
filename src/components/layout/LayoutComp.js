@@ -42,7 +42,7 @@ class GameLayout extends Component {
         newState = { ...this.state };
         newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
         this.setState({ ...newState }, this.buttonsEnabled);
-      }, 1500);
+      }, 1200);
     });
   }
   
