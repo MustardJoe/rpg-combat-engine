@@ -2,12 +2,24 @@
 
 exports[`App component renders App 1`] = `
 <Fragment>
-  <h1>
-    GriNd-O-TRoN
-  </h1>
-  <h3>
+  <p
+    className="logop"
+  >
+    <a
+      href="./"
+    >
+      <img
+        alt="GriNd-O-TRoN"
+        className="logo"
+        src="/path/image"
+      />
+    </a>
+  </p>
+  <h3
+    className="sublogo"
+  >
     A turn-based combat engine
   </h3>
-  <EngineWrapper />
+  <GameLayout />
 </Fragment>
 `;
