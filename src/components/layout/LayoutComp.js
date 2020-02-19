@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import styles from './layoutcomp.css';
+
+import players from '../../services/gamedata/Players';
+import enemies from '../../services/gamedata/Enemies';
+import Msgs from '../../services/gamedata/Msgs';
 import Actions from '../actions/Actions';
 import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
 import EnemyComp from '../enemystats/EnemyStats';
 import GameOver from '../gameover/GameOver';
 import CombatEngine from '../../services/combatengine/CombatEngine';
-import enemies from '../../services/gamedata/Enemies';
-import players from '../../services/gamedata/Players';
-import styles from './layoutcomp.css';
-import Msgs from '../../services/gamedata/Msgs';
 
 class GameLayout extends Component {
   state = {
@@ -48,6 +49,13 @@ class GameLayout extends Component {
   
   
   //PLAYER ACTIONS linked from engine here
+  playerDies = () => {
+    let playerDeathObj = CombatEngine.player.death(this.state.player, this.state.currentEnemy);
+    let newState = { ...this.state };
+    newState.currentTurn = playerDeathObj.currentTurn;
+    this.setState({ ...newState });
+  }
+
   playerRuns = () => {
     let playerRunsObj = CombatEngine.player.run(this.state.currentEnemy); 
 
@@ -55,8 +63,6 @@ class GameLayout extends Component {
     newState.playerMadeChoice = true;
     newState.currentEnemy = playerRunsObj.currentEnemy;
     newState.currentCombatMsg = playerRunsObj.currentCombatMsg;
-    // newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    // return this.setState({ ...newState });
     this.asyncStateReturn(newState);
   }
 
@@ -72,8 +78,6 @@ class GameLayout extends Component {
     newState.currentEnemy = specialReturnObj.beingHit;
     newState.player = specialReturnObj.hitting;
     newState.currentCombatMsg = specialReturnObj.combatMsg;
-    // newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    console.log('newState in Special', newState);
     this.asyncStateReturn(newState);
   }
 
@@ -87,8 +91,6 @@ class GameLayout extends Component {
     newState.playerMadeChoice = true;
     newState.player = playerHealReturnObj.healTarget;
     newState.currentCombatMsg = playerHealReturnObj.actionMsg;
-    // newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-    // return this.setState({ ...newState });
     this.asyncStateReturn(newState);
   }
 
@@ -99,7 +101,6 @@ class GameLayout extends Component {
       this.state.currentTurn,
     );
 
-    console.log('playerFightReturnObj', playerFightReturnObj);
     let newState = { ...this.state };
     newState.playerMadeChoice = true;
     newState.currentEnemy = playerFightReturnObj.beingHit;
@@ -109,7 +110,6 @@ class GameLayout extends Component {
 
   playerTriesToRun = () => {
     this.setState({ currentCombatMsg: Msgs.runMsg });
-    console.log('playerTriesToRun', this.state.currentCombatMsg);
     this.playerRuns();
   }
 
@@ -122,8 +122,6 @@ class GameLayout extends Component {
       this.state.currentTurn,
     );
     
-    /* eslint-disable-next-line no-console */
-    console.log('enemyFightReturnObj', enemyFightReturnObj);
     let newState = { ...this.state };
     newState.player = enemyFightReturnObj.beingHit;
     newState.currentCombatMsg = enemyFightReturnObj.combatMsg;
@@ -132,26 +130,20 @@ class GameLayout extends Component {
     return this.setState({ ...newState });
   }
 
-  //Lifecyle related stuff
+  //Component Lifecycle Methods
   componentDidMount() {
     this.loadEnemy();
   }
 
   componentDidUpdate() {
     if(this.state.player.hitPoints === 0 && this.state.currentTurn === 'player') {
-      let playerDeathObj = CombatEngine.player.death(this.state.player, this.state.currentEnemy);
-      console.log('hit points 0', this.state.currentTurn);
-      let newState = { ...this.state };
-      newState.currentTurn = playerDeathObj.currentTurn;
-      this.setState({ ...newState });
+      this.playerDies();
     }
     if(this.state.currentTurn === 'enemy' && this.state.currentEnemy.hitPoints > 0) {
-      console.log('enemy is trying to hit you');
       this.enemyTriesToHit();
     }
     else if(this.state.currentEnemy.hitPoints === 0) {
       let deathReturnObj = CombatEngine.enemyDeath(this.state.currentEnemy, this.state.player);
-      console.log('death return obj', deathReturnObj);
       let newState = { ...this.state };
       newState.currentEnemy = deathReturnObj.currentEnemy;
       newState.player = deathReturnObj.player;
