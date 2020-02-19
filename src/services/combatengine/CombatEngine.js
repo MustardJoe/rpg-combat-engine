@@ -17,36 +17,40 @@ const CombatEngine = {
     }
   },
 
-  //Shared Actions
-  universalActions: {
-    fight: function(hitting, beingHit, currentTurn) {
-      let fightActionReturnObj = {};
-      let thisRoll = CombatEngine.dieRolls.d20() + hitting.hitBonus;
+  //Helper funcs to use in player/enemy actions
+  attackIsSuccessful: function(sides, bonus) {
+    return CombatEngine.rollDie(sides) + bonus >= 0 ? true : false;
+  },
 
-      if(thisRoll >= beingHit.armorClass) {
+  applyDamage: function(attackDieSides, hitPoints) {
+    return hitPoints - CombatEngine.rollDie(attackDieSides);
+  },
+
+  healAmount: function(amount = 7) {
+    return CombatEngine.rollDie(amount) + 5;
+  },
+
+  //Shared Actions available to both player and enemies
+  universalActions: {
+
+    fight: function(hitting, beingHit, currentTurn) {
+      let fightActionReturnObj = { beingHit: beingHit };
+      if(CombatEngine.attackIsSuccessful(20, hitting.hitBonus - beingHit.armorClass)) {
         fightActionReturnObj.combatMsg = Msgs.attackRollMsgs[`${currentTurn}`][0];
-        fightActionReturnObj.damage = CombatEngine.dieRolls.universal(hitting.damageD);
-        fightActionReturnObj.beingHit = { ...beingHit };
-        fightActionReturnObj.beingHit.hitPoints = beingHit.hitPoints - fightActionReturnObj.damage;
+        fightActionReturnObj.beingHit.hitPoints = CombatEngine.applyDamage(hitting.damageD, beingHit.hitPoints);
         if(fightActionReturnObj.beingHit.hitPoints < 0) fightActionReturnObj.beingHit.hitPoints = 0;
       } 
       else {
         fightActionReturnObj.combatMsg = Msgs.attackRollMsgs[`${currentTurn}`][1];
-        fightActionReturnObj.beingHit = { ...beingHit };
-        fightActionReturnObj.damage = 0; 
-        fightActionReturnObj.beingHit.hitPoints = beingHit.hitPoints;
       }
       return fightActionReturnObj;
     },
 
     heal: function(healTarget, currentTurn) {
-      let healActionReturnObj = {};
-      healActionReturnObj.healTarget = { ...healTarget };
-      let healAmount = CombatEngine.dieRolls.universal(7) + 5;
-
+      let healActionReturnObj = { healTarget: healTarget };
       if(healTarget.healPotions > 0) {
         healActionReturnObj.actionMsg = Msgs.healMsgs[`${currentTurn}`][0];
-        healActionReturnObj.healTarget.hitPoints = healTarget.hitPoints + healAmount;
+        healActionReturnObj.healTarget.hitPoints += CombatEngine.healAmount();
         if(healActionReturnObj.healTarget.hitPoints > healTarget.maxHP) {
           healActionReturnObj.healTarget.hitPoints = healTarget.maxHP;
         }
@@ -54,15 +58,14 @@ const CombatEngine = {
       }
       if(healTarget.healPotions <= 0) {
         healActionReturnObj.actionMsg = Msgs.healMsgs[`${currentTurn}`][1];
-        healActionReturnObj.healTarget.hitPoints = healTarget.hitPoints;
-        healActionReturnObj.healTarget.healPotions = 0;
       }
       return healActionReturnObj;
     },
+
     special: function(hitting, beingHit, currentTurn) {
       let specialReturnObj = {};
-      let thisRoll = CombatEngine.dieRolls.d20() + hitting.special.specialBonus;
-      let damage = CombatEngine.dieRolls.universal(hitting.special.specialDamage) 
+      let thisRoll = CombatEngine.rollDie(20) + hitting.special.specialBonus;
+      let damage = CombatEngine.rollDie(hitting.special.specialDamage) 
         + hitting.special.specialBonus;
 
       if(hitting.special.remaining <= 0) {
@@ -149,27 +152,13 @@ const CombatEngine = {
     return null;
   },
 
-  dieRolls: {
-    d25: function() {
-      return Math.floor((Math.random()) * 25 + 1);
-    },
-    d20: function() {
-      return Math.floor((Math.random()) * 20 + 1);
-    },
-    d8: function() {
-      return Math.floor((Math.random()) * 8 + 1);
-    },
-
-    d2: function() {
-      return Math.floor((Math.random()) * 2 + 1);
-    },
-    d1: function() {
-      return 1;
-    },
-    universal: function(sides) {
-      return Math.floor((Math.random()) * sides + 1);
+  rollDie: function(sides) {
+    if(sides === undefined) {
+      console.error('side is undefined in CombatAction.rollDie');
+      //look up throw
     }
-  }
+    return Math.floor((Math.random()) * sides + 1);
+  },
 };
 
 export default CombatEngine;
