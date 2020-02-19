@@ -115,6 +115,16 @@ class GameLayout extends Component {
 
 
   //ENEMY ACTIONS linked from engine here
+  enemyDies = () => {
+    let deathReturnObj = CombatEngine.enemyDeath(this.state.currentEnemy, this.state.player);
+    let newState = { ...this.state };
+    newState.currentEnemy = deathReturnObj.currentEnemy;
+    newState.player = deathReturnObj.player;
+    newState.currentTurn = deathReturnObj.currentTurn;
+    newState.currentCombatMsg = deathReturnObj.msg;
+    this.setState({ ...newState });
+  }
+
   enemyTriesToHit = () => {
     let enemyFightReturnObj = CombatEngine.universalActions.fight(
       this.state.currentEnemy,
@@ -143,19 +153,12 @@ class GameLayout extends Component {
       this.enemyTriesToHit();
     }
     else if(this.state.currentEnemy.hitPoints === 0) {
-      let deathReturnObj = CombatEngine.enemyDeath(this.state.currentEnemy, this.state.player);
-      let newState = { ...this.state };
-      newState.currentEnemy = deathReturnObj.currentEnemy;
-      newState.player = deathReturnObj.player;
-      newState.currentTurn = deathReturnObj.currentTurn;
-      newState.currentCombatMsg = deathReturnObj.msg;
-      this.setState({ ...newState });
+      this.enemyDies();
     }
     else if(this.state.currentEnemy.data === 'none') {
       this.loadEnemy();
     }
   }
-
 
   render() {
     let { currentTurn } = this.state;
