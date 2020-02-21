@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya&display=swap');
+
 .userActions {
   display: inline-block;
   border: solid 2px greenyellow;
@@ -10,6 +12,21 @@
 .actionsList {
   list-style: none;
   li {
-    margin: 1.2em;
+    margin: 0.8em;
   }
+}
+
+.buttons {
+  background-color: green;
+  border: none;
+  color: black;
+  font-family: 'Alegreya', serif;
+  padding: 0.2em 0.6em;
+  border-radius: 0.5em;
+  margin-right: 1.4em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  cursor: pointer;
 }
