@@ -6,6 +6,7 @@
   min-width: 48vw;
   min-height: 24vh;
   padding: 0.5em;
+  margin-bottom: 0;
   font-size: 1.4em;
   border-radius: 2em;
 }
@@ -15,6 +16,10 @@
   display: inline-block;
 }
 
+.imgP {
+  margin: 0.2em;
+}
+
 .battleCount {
   vertical-align: top;
   
@@ -22,5 +27,5 @@
 }
 
 .screenMsg {
-  margin-top: 0.5em;
+  margin: 0.5em;
 }

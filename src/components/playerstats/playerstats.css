@@ -6,10 +6,10 @@
 .yourStatsWindow {
   display: inline-block;
   border: solid 2px mediumspringgreen;
-  padding: 1em;
+  padding: 0.5em;
   border-radius: 2em;
   margin: 1em;
-  min-height: 12em;
+  min-height: 10em;
 }
 
 .yourStatsList {

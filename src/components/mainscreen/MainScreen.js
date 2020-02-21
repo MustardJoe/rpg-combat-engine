@@ -8,7 +8,7 @@ function MainScreen({ currentCombatMsg, enemyImg }) {
       <p className={styles.screenMsg}>
         {currentCombatMsg}
       </p>
-      <p>
+      <p className={styles.imgP}>
         <img className={styles.img} src={enemyImg} alt="<image of a baddie>"></img> 
       </p>
     </section>

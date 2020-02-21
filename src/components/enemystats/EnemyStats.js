@@ -13,7 +13,7 @@ function EnemyComp({ enemy, count }) {
 
   return (
     <section className={styles.enemyStats}>
-      <p>Current Enemy:</p>
+      <p className={styles.currentTag}>Current Enemy:</p>
       <p className={styles.enemyName}>{name}</p>
       <ul className={styles.statsList}>
         <li>Hit Points: {hitPoints}</li>
