@@ -5,6 +5,7 @@ import players from '../../services/gamedata/Players';
 import enemies from '../../services/gamedata/Enemies';
 import Msgs from '../../services/gamedata/Msgs';
 import Actions from '../actions/Actions';
+import About from '../about/About';
 import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
 import EnemyComp from '../enemystats/EnemyStats';
@@ -167,7 +168,7 @@ class GameLayout extends Component {
     }
     else {
       return (
-        <div className={styles.containerStyle}>
+        /*<div className={styles.containerStyle}>
           <MainScreen 
             currentCombatMsg={this.state.currentCombatMsg}
             enemyImg={this.state.currentEnemy.img} />
@@ -181,7 +182,8 @@ class GameLayout extends Component {
             <EnemyComp enemy={this.state.currentEnemy}
               count={this.state.battlesFought} />
           </div>
-        </div>
+        </div>*/
+        <About />
       );
 
     }
