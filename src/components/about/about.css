@@ -1,14 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya&display=swap');
+
 .aboutHeader {
   color: yellowgreen;
+  font-family: 'Alegreya', serif;
 }
 
 .section {
   align-content: center;
 }
-
 .paragraph {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.4em;
+}
+
+.divInPara {
+ a{
+   color: mediumspringgreen;
+ }
+}
+
+.selfie {
+  max-width: 12vw;
+  float: left;
 }
