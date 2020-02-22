@@ -168,7 +168,7 @@ class GameLayout extends Component {
     }
     else {
       return (
-        /*<div className={styles.containerStyle}>
+        <div className={styles.containerStyle}>
           <MainScreen 
             currentCombatMsg={this.state.currentCombatMsg}
             enemyImg={this.state.currentEnemy.img} />
@@ -182,8 +182,8 @@ class GameLayout extends Component {
             <EnemyComp enemy={this.state.currentEnemy}
               count={this.state.battlesFought} />
           </div>
-        </div>*/
-        <About />
+        </div>
+        /*<About />*/
       );
 
     }
