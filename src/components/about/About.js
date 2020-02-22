@@ -33,7 +33,7 @@ export default function About() {
           Additionally,
           I'm currently looking for work, so please feel free to visit <a
             className={styles.link}
-            href="https://www.linkedin.com/in/jon-forney/">my linked in page</a> or
+            href="https://www.linkedin.com/in/jon-forney/">my LinkedIn page</a> or
           contact me directly with your professional opportunies.
         </p>
       </p>
