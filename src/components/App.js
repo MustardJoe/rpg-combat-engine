@@ -20,7 +20,7 @@ export default function App() {
         </a>
       </p>
       <Router>
-        <nav>
+        <nav className={styles.inNav}>
           <Link className={styles.link} to="/">A turn-based combat engine</Link>
           {' || '}
           <Link className={styles.link} to="/about">About</Link>

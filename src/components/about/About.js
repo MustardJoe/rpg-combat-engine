@@ -29,20 +29,26 @@ export default function About() {
 
           If you enjoy GriNd-O-TRoN, please consider checking out more of my
           projects on <a className={styles.link}
+            target="_blank" 
+            rel="noopener noreferrer"
             href="http://www.jonforney.com/">www.jonforney.com</a> or on my <a
+            target="_blank" 
+            rel="noopener noreferrer"
             href="https://github.com/MustardJoe">GitHub</a>.
           Additionally, please feel free to visit my <a
             className={styles.link}
+            target="_blank" 
+            rel="noopener noreferrer"
             href="https://www.linkedin.com/in/jon-forney/">LinkedIn</a> page or
           contact me directly with your professional opportunies.
         </p>
       </p>
-      <p>
+      <p className={styles.divInPara}>
         © <a className={styles.link}
+          target="_blank" 
+          rel="noopener noreferrer"
           href="http://www.jonforney.com">Jon Forney</a> 2020
       </p>
     </section>
-
-    
   );
 }

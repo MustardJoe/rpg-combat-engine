@@ -56,7 +56,7 @@ class Actions extends Component {
               id="specialButton" onClick={this.playerClicksSpecial}
               disabled={this.props.playerMadeChoice}>Special</button>
           </li>
-          <li>Defend</li>
+          {/* <li>Defend</li> */}
           <li>
             <button type="Run" 
               className={styles.buttons}
