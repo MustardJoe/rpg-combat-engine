@@ -1,8 +1,15 @@
 import React from 'react';
 import LayoutComp from '../components/layout/LayoutComp';
+import About from '../components/about/About';
 /*import EngineWrapper from '../services/combatengine/EngineWrapper';*/
 import grindotronlogo from '../assets/grindotronlogo.png';
 import styles from './app.css';
+import {
+  BrowserRouter as Router,
+  Link,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 export default function App() {
   return (
@@ -12,8 +19,17 @@ export default function App() {
           <img src={grindotronlogo} alt="GriNd-O-TRoN" className={styles.logo}></img>
         </a>
       </p>
-      <h3 className={styles.sublogo}>A turn-based combat engine</h3>
-      <LayoutComp />
+      <Router>
+        <nav>
+          <Link className={styles.link} to="/">A turn-based combat engine</Link>
+          {' || '}
+          <Link className={styles.link} to="/about">About</Link>
+        </nav>
+        <Switch>
+          <Route exact path="/" component={LayoutComp} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </Router>
     </>
   );
 }

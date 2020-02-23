@@ -28,14 +28,18 @@ export default function About() {
         <p className={styles.divInPara}>
 
           If you enjoy GriNd-O-TRoN, please consider checking out more of my
-          projects here on GitHub, or on <a className={styles.link}
-            href="http://www.jonforney.com/">www.jonforney.com</a>.
-          Additionally,
-          I'm currently looking for work, so please feel free to visit <a
+          projects on <a className={styles.link}
+            href="http://www.jonforney.com/">www.jonforney.com</a> or on my <a
+            href="https://github.com/MustardJoe">GitHub</a>.
+          Additionally, please feel free to visit my <a
             className={styles.link}
-            href="https://www.linkedin.com/in/jon-forney/">my LinkedIn page</a> or
+            href="https://www.linkedin.com/in/jon-forney/">LinkedIn</a> page or
           contact me directly with your professional opportunies.
         </p>
+      </p>
+      <p>
+        © <a className={styles.link}
+          href="http://www.jonforney.com">Jon Forney</a> 2020
       </p>
     </section>
 
