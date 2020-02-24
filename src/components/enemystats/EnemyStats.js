@@ -20,7 +20,7 @@ function EnemyComp({ enemy, count }) {
         <li>Armor Class: {armorClass}</li>
         <li>Damage: 1d{damageD}</li>
       </ul>
-      <p><BattlesCount count={count} /></p>
+      <BattlesCount count={count} />
     </section>
   );
 }
