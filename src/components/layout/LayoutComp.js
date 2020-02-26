@@ -5,7 +5,6 @@ import players from '../../services/gamedata/Players';
 import enemies from '../../services/gamedata/Enemies';
 import Msgs from '../../services/gamedata/Msgs';
 import Actions from '../actions/Actions';
-import About from '../about/About';
 import MainScreen from '../mainscreen/MainScreen';
 import PlayerStats from '../playerstats/PlayerStats';
 import EnemyComp from '../enemystats/EnemyStats';
@@ -24,7 +23,8 @@ class GameLayout extends Component {
 
   // Helper Functions
   loadEnemy = () => {
-    if(this.state.currentEnemy.data === 'none') {
+    if(this.state.currentEnemy.data === 'none' && this.state.player.hitPoints > 0) {
+      // console.log('in load enemy', this.state.player);
       let randomEnemy = enemies.randomEnemy();
       return this.setState({ 
         currentEnemy: randomEnemy,
@@ -54,6 +54,8 @@ class GameLayout extends Component {
     let playerDeathObj = CombatEngine.player.death(this.state.player, this.state.currentEnemy);
     let newState = { ...this.state };
     newState.currentTurn = playerDeathObj.currentTurn;
+    // console.log('in player  dies', this.state);
+    //maybe this func should have async await?  also  fix key speed  thing
     this.setState({ ...newState });
   }
 
@@ -110,8 +112,22 @@ class GameLayout extends Component {
   }
 
   playerTriesToRun = () => {
-    this.setState({ currentCombatMsg: Msgs.runMsg });
-    this.playerRuns();
+    // this.setState({ currentCombatMsg: Msgs.runMsg });
+
+    //asyncStateReturn = (newState) => {
+    this.setState({ currentCombatMsg: Msgs.runMsg }, () => {
+      setTimeout(() => {
+        let newState = { ...this.state };
+        newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
+
+        // console.log('in player tries to run', this.state);
+
+        this.setState({ ...newState }, this.playerRuns);
+      }, 1200);
+    });
+    // }
+
+    // this.playerRuns();
   }
 
 
@@ -137,7 +153,6 @@ class GameLayout extends Component {
     newState.player = enemyFightReturnObj.beingHit;
     newState.currentCombatMsg = enemyFightReturnObj.combatMsg;
     newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-
     return this.setState({ ...newState });
   }
 
@@ -163,7 +178,7 @@ class GameLayout extends Component {
 
   render() {
     let { currentTurn } = this.state;
-    if(currentTurn === 'Game Over') {
+    if(currentTurn === 'Game Over' || currentTurn === undefined) {
       return <GameOver />;
     }
     else {
@@ -183,9 +198,7 @@ class GameLayout extends Component {
               count={this.state.battlesFought} />
           </div>
         </div>
-        /*<About />*/
       );
-
     }
   }
 }

@@ -91,6 +91,7 @@ const CombatEngine = {
   //THESE ARE PLAYER ONLY ACTIONS BELOW
   player: {
     run: function(currentEnemy) {
+      console.log('in CombatEngine.player.run');
       if(currentEnemy.data != 'none') {
         let runReturnObj = {};
         runReturnObj.currentEnemy = enemies.randomEnemy();
