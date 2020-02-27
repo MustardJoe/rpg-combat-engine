@@ -91,7 +91,6 @@ const CombatEngine = {
   //THESE ARE PLAYER ONLY ACTIONS BELOW
   player: {
     run: function(currentEnemy) {
-      console.log('in CombatEngine.player.run');
       if(currentEnemy.data != 'none') {
         let runReturnObj = {};
         runReturnObj.currentEnemy = enemies.randomEnemy();
@@ -138,14 +137,11 @@ const CombatEngine = {
     if(enemy.hitPoints <= 0) {
       deathReturnObj.enemy.alive = false;
       deathReturnObj.msg = Msgs.deathMsgs.randEnemyDieMsg();
-      console.log('enemy exp', enemy.exp);
       deathReturnObj.player.exp += enemy.exp;
-      console.log(deathReturnObj.player.exp);
       let levelUp = CombatEngine.player.levelUp(deathReturnObj.player);
       if(levelUp) {
         deathReturnObj.player = { ...levelUp.player };
       }
-      console.log('level up', levelUp);
       deathReturnObj.currentEnemy = { data: 'none' };
       deathReturnObj.currentTurn = 'player';
       return deathReturnObj;

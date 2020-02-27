@@ -24,7 +24,6 @@ class GameLayout extends Component {
   // Helper Functions
   loadEnemy = () => {
     if(this.state.currentEnemy.data === 'none' && this.state.player.hitPoints > 0) {
-      // console.log('in load enemy', this.state.player);
       let randomEnemy = enemies.randomEnemy();
       return this.setState({ 
         currentEnemy: randomEnemy,
@@ -54,8 +53,6 @@ class GameLayout extends Component {
     let playerDeathObj = CombatEngine.player.death(this.state.player, this.state.currentEnemy);
     let newState = { ...this.state };
     newState.currentTurn = playerDeathObj.currentTurn;
-    // console.log('in player  dies', this.state);
-    //maybe this func should have async await?  also  fix key speed  thing
     this.setState({ ...newState });
   }
 
@@ -112,24 +109,15 @@ class GameLayout extends Component {
   }
 
   playerTriesToRun = () => {
-    // this.setState({ currentCombatMsg: Msgs.runMsg });
-
-    //asyncStateReturn = (newState) => {
-    this.setState({ currentCombatMsg: Msgs.runMsg }, () => {
+    this.setState({ currentCombatMsg: Msgs.runMsg,
+      playerMadeChoice: true }, () => {
       setTimeout(() => {
         let newState = { ...this.state };
         newState.currentTurn = CombatEngine.turnSwap(this.state.currentTurn);
-
-        // console.log('in player tries to run', this.state);
-
         this.setState({ ...newState }, this.playerRuns);
       }, 1200);
     });
-    // }
-
-    // this.playerRuns();
   }
-
 
   //ENEMY ACTIONS linked from engine here
   enemyDies = () => {
