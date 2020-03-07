@@ -8,6 +8,8 @@ import grindoskullhead from '../../assets/grindoskullhead.png';
 import grindofloatrobo from '../../assets/grindofloatrobo.png';
 import grindobadevilknight from '../../assets/grindobadevilknight.png';
 import grindogoodevilknight from '../../assets/grindogoodevilknight.png';
+import grindolazyraven from '../../assets/grindolazyraven.png';
+import grindowarlock from '../../assets/grindowarlock.png';
 
 const enemies = {
   
@@ -118,6 +120,19 @@ const enemies = {
       alive: true,
     },
     {
+      name: 'Lazy Raven',
+      hitPoints: 18,
+      armorClass: 6,
+      hitBonus: 0,
+      damageD: 2,
+      dexterity: 5,
+      img: grindolazyraven,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 250,
+      alive: true,
+    },
+    {
       name: 'Ninja Master',
       hitPoints: 50,
       armorClass: 18,
@@ -135,12 +150,25 @@ const enemies = {
       hitPoints: 18,
       armorClass: 5,
       hitBonus: 0,
-      damageD: 5,
+      damageD: 4,
       dexterity: 5,
       img: grindoskullhead,
       healPotions: 0,
       status: 'Normal',
-      exp: 175,
+      exp: 220,
+      alive: true,
+    },
+    {
+      name: 'Warlock',
+      hitPoints: 8,
+      armorClass: 3,
+      hitBonus: 0,
+      damageD: 5,
+      dexterity: 5,
+      img: grindowarlock,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 200,
       alive: true,
     },
   ],

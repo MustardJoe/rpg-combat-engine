@@ -16,9 +16,11 @@ export default function App() {
     <>
       <p className={styles.logop}>
         <a href="./">
-          <img src={grindotronlogo} alt="GriNd-O-TRoN" className={styles.logo}></img>
+          <img src={grindotronlogo} alt="pixelated logo of grind-o-tron logo"
+            className={styles.logo}></img>
         </a>
       </p>
+
       <Router>
         <nav className={styles.inNav}>
           <Link className={styles.link} to="/">A turn-based combat engine</Link>
