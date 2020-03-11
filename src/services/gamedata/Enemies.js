@@ -10,6 +10,7 @@ import grindobadevilknight from '../../assets/grindobadevilknight.png';
 import grindogoodevilknight from '../../assets/grindogoodevilknight.png';
 import grindolazyraven from '../../assets/grindolazyraven.png';
 import grindowarlock from '../../assets/grindowarlock.png';
+import grindoslug from '../../assets/grindoslug.png';
 
 const enemies = {
   
@@ -156,6 +157,19 @@ const enemies = {
       healPotions: 0,
       status: 'Normal',
       exp: 220,
+      alive: true,
+    },
+    {
+      name: 'Boogery Slug',
+      hitPoints: 6,
+      armorClass: 2,
+      hitBonus: 0,
+      damageD: 2,
+      dexterity: 5,
+      img: grindoslug,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 80,
       alive: true,
     },
     {
