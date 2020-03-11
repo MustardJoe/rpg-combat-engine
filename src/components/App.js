@@ -1,7 +1,6 @@
 import React from 'react';
 import LayoutComp from '../components/layout/LayoutComp';
 import About from '../components/about/About';
-/*import EngineWrapper from '../services/combatengine/EngineWrapper';*/
 import grindotronlogo from '../assets/grindotronlogo.png';
 import styles from './app.css';
 import {
