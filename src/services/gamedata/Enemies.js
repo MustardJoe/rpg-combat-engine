@@ -11,14 +11,28 @@ import grindogoodevilknight from '../../assets/grindogoodevilknight.png';
 import grindolazyraven from '../../assets/grindolazyraven.png';
 import grindowarlock from '../../assets/grindowarlock.png';
 import grindoslug from '../../assets/grindoslug.png';
+import grindobabytrogdor from '../../assets/grindobabytrogdor.png';
 
 const enemies = {
   
   enemyList: [
     {
+      name: 'Baby Trogdor',
+      hitPoints: 18,
+      armorClass: 6,
+      hitBonus: 0,
+      damageD: 5,
+      dexterity: 5,
+      img: grindobabytrogdor,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 250,
+      alive: true,
+    },
+    {
       name: 'Bad Evil Knight',
       hitPoints: 12,
-      armorClass: 6,
+      armorClass: 5,
       hitBonus: 0,
       damageD: 5,
       dexterity: 5,
