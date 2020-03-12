@@ -131,7 +131,7 @@ class GameLayout extends Component {
     console.log(
       'enemy:', this.state.currentEnemy.name,
       'enemy exp:', this.state.currentEnemy.exp,
-      'player exp:', this.state.player.exp,);
+      'player exp:', newState.player.exp,);
     this.setState({ ...newState });
   }
 
