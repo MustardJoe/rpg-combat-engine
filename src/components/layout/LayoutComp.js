@@ -127,6 +127,11 @@ class GameLayout extends Component {
     newState.player = deathReturnObj.player;
     newState.currentTurn = deathReturnObj.currentTurn;
     newState.currentCombatMsg = deathReturnObj.msg;
+    /* eslint-disable-next-line no-console */
+    console.log(
+      'enemy:', this.state.currentEnemy.name,
+      'enemy exp:', this.state.currentEnemy.exp,
+      'player exp:', this.state.player.exp,);
     this.setState({ ...newState });
   }
 
