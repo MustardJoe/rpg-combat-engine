@@ -26,8 +26,8 @@ const CombatEngine = {
     return hitPoints - CombatEngine.rollDie(attackDieSides);
   },
 
-  healAmount: function(amount = 7) {
-    return CombatEngine.rollDie(amount) + 5;
+  healAmount: function(amount = 10) {
+    return CombatEngine.rollDie(amount) + 6;
   },
 
   //Shared Actions available to both player and enemies
@@ -132,7 +132,6 @@ const CombatEngine = {
     let deathReturnObj = {};
     deathReturnObj.enemy = { ...enemy };
     deathReturnObj.player = { ...player };
-    
     
     if(enemy.hitPoints <= 0) {
       deathReturnObj.enemy.alive = false;
