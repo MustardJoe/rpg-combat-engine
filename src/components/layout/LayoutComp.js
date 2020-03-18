@@ -175,7 +175,7 @@ class GameLayout extends Component {
     if(this.state.currentTurn === 'enemy' && this.state.currentEnemy.hitPoints > 0) {
       this.enemyTriesToHit();
     }
-    else if(this.state.currentEnemy.hitPoints === 0) {
+    else if(this.state.currentEnemy.hitPoints === 0 && this.state.currentTurn === 'enemy') {
       this.enemyDies();
     }
     else if(this.state.currentEnemy.data === 'none') {
