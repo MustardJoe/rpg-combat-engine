@@ -12,6 +12,7 @@ import grindolazyraven from '../../assets/grindolazyraven.png';
 import grindowarlock from '../../assets/grindowarlock.png';
 import grindoslug from '../../assets/grindoslug.png';
 import grindobabytrogdor from '../../assets/grindobabytrogdor.png';
+import grindoflower from '../../assets/grindoflower.png';
 
 const enemies = {
   
@@ -53,6 +54,32 @@ const enemies = {
       healPotions: 0,
       exp: 500,
       status: 'Normal',
+      alive: true,
+    },
+    {
+      name: 'Boogery Slug',
+      hitPoints: 6,
+      armorClass: 2,
+      hitBonus: 0,
+      damageD: 2,
+      dexterity: 5,
+      img: grindoslug,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 80,
+      alive: true,
+    },
+    {
+      name: 'Doofy Daisy',
+      hitPoints: 4,
+      armorClass: 2,
+      hitBonus: 0,
+      damageD: 2,
+      dexterity: 5,
+      img: grindoflower,
+      healPotions: 0,
+      status: 'Normal',
+      exp: 65,
       alive: true,
     },
     {
@@ -171,19 +198,6 @@ const enemies = {
       healPotions: 0,
       status: 'Normal',
       exp: 220,
-      alive: true,
-    },
-    {
-      name: 'Boogery Slug',
-      hitPoints: 6,
-      armorClass: 2,
-      hitBonus: 0,
-      damageD: 2,
-      dexterity: 5,
-      img: grindoslug,
-      healPotions: 0,
-      status: 'Normal',
-      exp: 80,
       alive: true,
     },
     {
