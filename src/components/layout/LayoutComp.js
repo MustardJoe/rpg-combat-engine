@@ -46,6 +46,18 @@ class GameLayout extends Component {
       }, 1200);
     });
   }
+
+  // //flesh out this func - currently just copy of load enemy - need to merge w/async functionality
+  // asyncLoadEnemy = () => {
+  //   if(this.state.currentEnemy.data === 'none' && this.state.player.hitPoints > 0) {
+  //     let randomEnemy = enemies.randomEnemy();
+  //     return this.setState({ 
+  //       currentEnemy: randomEnemy,
+  //       currentCombatMsg: `A ${randomEnemy.name} begins to attack you!`,
+  //       battlesFought: this.state.battlesFought + 1 
+  //     });
+  //   }
+  // }
   
   
   //PLAYER ACTIONS linked from engine here
@@ -118,6 +130,7 @@ class GameLayout extends Component {
       }, 1200);
     });
   }
+  
 
   //ENEMY ACTIONS linked from engine here
   enemyDies = () => {
@@ -133,6 +146,7 @@ class GameLayout extends Component {
       'enemy exp:', this.state.currentEnemy.exp,
       'player exp:', newState.player.exp,);
     this.setState({ ...newState });
+    // this.asyncStateReturn(newState);
   }
 
   enemyTriesToHit = () => {
