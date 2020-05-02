@@ -14,12 +14,10 @@ class Actions extends Component {
 
   playerClicksFight = () => {
     this.props.playerTriesToHit();
-    // this.disableAllButtons();
   }
 
   playerClicksHeal = () => {
     this.props.playerTriesToHeal();
-    // this.disableAllButtons();
   }
 
   playerClicksRun = () => {
