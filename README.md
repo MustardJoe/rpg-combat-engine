@@ -6,7 +6,7 @@
 
 **Technical Vision:** GriNd-O-TRoN is a React app, hosted on Netlify, using pixel art created with Aseprite. My goals with this project were threefold: I needed to efficiently handle the largest and most complex state object I had worked with to date, I wanted to implement basic principals of object-oriented programming with the combat-engine module itself, and I wanted to experiment with a project that, rather than doing a specific task or having some utility value, was just a fun diversion that would provide a bit of enjoyment for the user.
 
-**Additionally:** If you enjoy GriNd-O-TRoN, please consider checking out more of my projects here on GitHub, or on http://www.jonforney.com/.  Additionally, I'm currently looking for work, so please feel free to visit my linked in page at https://www.linkedin.com/in/jon-forney/ or contact me directly with your professional opportunities.
+**Further Info:**  If you enjoy GriNd-O-TRon, please consider checking out more of <a href="https://github.com/MustardJoe">my projects on GitHub</a>, or at my homepage, <a href="https://wwww.jonforney.com">https://www.jonforney.com/</a>.  My linkdIn page is available at <a href="https://www.linkedin.com/in/jon-forney/">https://www.linkedin.com/in/jon-forney/</a>.  Please feel free to contact me with your professional opportunities.
 
 <center>
 <img src="./src/assets/grindofloatrobo.png">
